@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
+import { path } from "../lib/paths";
 ---
 
 <BaseLayout
@@ -64,7 +65,7 @@ import { aff } from "../data/affiliates";
       <a class="btn btn-primary" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
         >Get transfer quote</a
       >
-      <a class="btn btn-ghost" href="/esim-georgia">Need eSIM first?</a>
+      <a class="btn btn-ghost" href={path("esim-georgia")}>Need eSIM first?</a>
       <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through this link.</p>
     </aside>
   </main>

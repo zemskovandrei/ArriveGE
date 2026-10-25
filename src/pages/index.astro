@@ -1,40 +1,41 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { path } from "../lib/paths";
 
 const needs = [
   {
     num: "01",
-    href: "/esim-georgia",
+    href: path("esim-georgia"),
     title: "Internet from the gate",
     text: "Install eSIM at home. City plans vs mountain coverage.",
   },
   {
     num: "02",
-    href: "/tbilisi-airport-transfer",
+    href: path("tbilisi-airport-transfer"),
     title: "Ride from Tbilisi Airport",
     text: "Bolt on arrival vs a driver waiting with your name.",
   },
   {
     num: "03",
-    href: "/tbilisi-hotels",
+    href: path("tbilisi-hotels"),
     title: "Where to sleep in Tbilisi",
     text: "Old Town, Vera, or Vake — by walkability and budget.",
   },
   {
     num: "04",
-    href: "/batumi-hotels",
+    href: path("batumi-hotels"),
     title: "Where to sleep in Batumi",
     text: "Seafront, center, or quieter blocks away from the boulevard.",
   },
   {
     num: "05",
-    href: "/kazbegi-day-trip",
+    href: path("kazbegi-day-trip"),
     title: "Kazbegi in one day",
     text: "Book the seat before you land. Gergeti fills up fast in season.",
   },
   {
     num: "+",
-    href: "/kakheti-wine-tour",
+    href: path("kakheti-wine-tour"),
     title: "Kakheti wine day",
     text: "Driver tour or your own car — pick before the weekend rush.",
   },
@@ -53,7 +54,7 @@ const needs = [
         Georgia starts at landing. Get data, a ride, a bed, and your first day trip sorted before the doors open.
       </p>
       <div class="cta-row" data-reveal data-reveal-delay="180">
-        <a class="btn btn-primary" href="/esim-georgia">Get eSIM first</a>
+        <a class="btn btn-primary" href={path("esim-georgia")}>Get eSIM first</a>
         <a class="btn btn-ghost" href="#needs">See what to book</a>
       </div>
     </div>

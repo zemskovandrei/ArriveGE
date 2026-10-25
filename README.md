@@ -53,4 +53,8 @@ Until you paste real links, buttons open the public product sites (no commission
 
 ## Deploy
 
-Build with `npm run build`, then host the `dist/` folder on Netlify, Cloudflare Pages, GitHub Pages, or Vercel.
+GitHub Pages (automatic on push to `master`):
+
+**https://zemskovandrei.github.io/ArriveGE/**
+
+Local build: `npm run build` → `dist/`.

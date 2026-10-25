@@ -1,4 +1,6 @@
 ---
+import { path } from "../lib/paths";
+
 interface Props {
   nextHref?: string;
   nextLabel?: string;
@@ -6,6 +8,7 @@ interface Props {
 }
 
 const { nextHref, nextLabel, homeNote = false } = Astro.props;
+const nextUrl = nextHref ? path(nextHref) : undefined;
 ---
 
 <footer class="site-footer">
@@ -20,19 +23,21 @@ const { nextHref, nextLabel, homeNote = false } = Astro.props;
           </p>
         </div>
       ) : (
-        <a class="brand" href="/">Arrive<span>GE</span></a>
+        <a class="brand" href={path()}>
+          Arrive<span>GE</span>
+        </a>
       )
     }
     {
-      nextHref && nextLabel ? (
+      nextUrl && nextLabel ? (
         <p>
-          Next: <a href={nextHref}>{nextLabel}</a>
+          Next: <a href={nextUrl}>{nextLabel}</a>
         </p>
       ) : homeNote ? (
         <p>English · works for any traveler</p>
       ) : (
         <p>
-          Back to <a href="/">checklist</a>
+          Back to <a href={path()}>checklist</a>
         </p>
       )
     }
