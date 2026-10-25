@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+---
+
+<BaseLayout
+  title="Kakheti wine day — tour vs car | ArriveGE"
+  description="Kakheti wine day from Tbilisi: book a tasting tour with a driver, or rent a car if someone stays sober. Decide before the weekend."
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Wine country</p>
+      <h1>Kakheti wine day</h1>
+      <p>You are tasting qvevri wine. Someone has to drive back. That single fact decides tour vs rental.</p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Guided tasting tour</h2>
+      <p>
+        Driver included. Two or three wineries, lunch, return to Tbilisi. Best default for couples and small groups who
+        came to drink, not to navigate village roads.
+      </p>
+
+      <h2>Rental car</h2>
+      <p>
+        More freedom on timing and overnight stays in the valley. Only if one adult stays under the limit and you are
+        comfortable with Georgian highway driving.
+      </p>
+
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Group</th>
+            <th>Usually book</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Everyone wants to taste</td>
+            <td>Tour with driver</td>
+          </tr>
+          <tr>
+            <td>Multi-day Kakheti stay</td>
+            <td>Car rental</td>
+          </tr>
+          <tr>
+            <td>Solo traveler</td>
+            <td>Small-group tour</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Book the day</h2>
+      <p>Affiliate links. Compare pickup time and winery count on the live page.</p>
+      <a class="btn btn-primary" href={aff("kakhetiTour")} target="_blank" rel="noopener sponsored noreferrer"
+        >Kakheti wine tours</a
+      >
+      <a class="btn btn-ghost" href={aff("carRental")} target="_blank" rel="noopener sponsored noreferrer"
+        >Compare car rental</a
+      >
+      <p class="disclaimer">We may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>

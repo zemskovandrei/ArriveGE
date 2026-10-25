@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+---
+
+<BaseLayout
+  title="Tbilisi hotels by neighborhood | ArriveGE"
+  description="Where to stay in Tbilisi: Old Town for first visits, Vera for cafes, Vake for quieter nights. Book with dates, not vibes."
+  nextHref="/kazbegi-day-trip"
+  nextLabel="Kazbegi day trip"
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Sleep</p>
+      <h1>Tbilisi hotels</h1>
+      <p>
+        Pick a neighborhood for how you move, then filter by dates and cancellation. Skip “best of” lists with fifty
+        logos.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Old Town / Abanotubani</h2>
+      <p>
+        First trip, short stay, walk to sulfur baths and Narikala. Expect hills, tourists, and music at night. Good if
+        you want zero commute to the postcard streets.
+      </p>
+
+      <h2>Vera / Sololaki edge</h2>
+      <p>
+        Cafes, wine bars, flatter walks. Still central, usually calmer nights than the bath district. Strong default for
+        3–5 nights.
+      </p>
+
+      <h2>Vake</h2>
+      <p>
+        Parks, apartments, quieter evenings. You will use Bolt more. Better if you work remotely or travel with kids.
+      </p>
+
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Start here</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Walk everywhere for 2 days</td>
+            <td>Old Town</td>
+          </tr>
+          <tr>
+            <td>Food + wine at night</td>
+            <td>Vera</td>
+          </tr>
+          <tr>
+            <td>Sleep + laptop</td>
+            <td>Vake</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Search stays</h2>
+      <p>Opens Tbilisi hotel search. Set your dates. Affiliate link.</p>
+      <a class="btn btn-primary" href={aff("hotelsTbilisi")} target="_blank" rel="noopener sponsored noreferrer"
+        >Browse Tbilisi hotels</a
+      >
+      <a class="btn btn-ghost" href="/batumi-hotels">Going to Batumi?</a>
+      <p class="disclaimer">We may earn a commission from bookings made through this link.</p>
+    </aside>
+  </main>
+</BaseLayout>

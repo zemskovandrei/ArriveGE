@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+---
+
+<BaseLayout
+  title="Kazbegi day trip from Tbilisi | ArriveGE"
+  description="Book a Kazbegi / Gergeti day trip before you land. Group tour vs private driver — what to reserve while seats are open."
+  nextHref="/esim-georgia"
+  nextLabel="mountain eSIM"
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Mountains</p>
+      <h1>Kazbegi in one day</h1>
+      <p>
+        Long road day from Tbilisi. Reserve the seat before arrival — popular dates sell out, and mountain weather does
+        not wait for jet lag.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Group day tour</h2>
+      <p>
+        Cheapest per seat. Fixed stops, fixed return. Good if you are solo or two people and do not want to manage a car
+        on the Military Highway.
+      </p>
+
+      <h2>Private driver</h2>
+      <p>
+        Leave when you want, linger at Gergeti, skip crowded lunch stops. Costs more; worth it for families or if you
+        only have one mountain day.
+      </p>
+
+      <h2>Before you book</h2>
+      <ul>
+        <li>Check cancellation if clouds can kill the view day.</li>
+        <li>Wear real shoes for the Gergeti walk — not hotel slippers.</li>
+        <li>Install mountain-capable eSIM if you need maps offline failures covered.</li>
+      </ul>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Reserve the day</h2>
+      <p>Affiliate tour search for Kazbegi from Tbilisi. Confirm pickup time on the product page.</p>
+      <a class="btn btn-primary" href={aff("kazbegiTour")} target="_blank" rel="noopener sponsored noreferrer"
+        >See Kazbegi tours</a
+      >
+      <a class="btn btn-ghost" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
+        >Private driver / transfer</a
+      >
+      <p class="disclaimer">We may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>

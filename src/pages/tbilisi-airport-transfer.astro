@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+---
+
+<BaseLayout
+  title="Tbilisi Airport transfer — Bolt vs prebooked driver | ArriveGE"
+  description="Choose Bolt after landing or a prebooked driver from Tbilisi Airport (TBS). When each option is cheaper and calmer."
+  nextHref="/tbilisi-hotels"
+  nextLabel="Tbilisi hotels"
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">TBS → city</p>
+      <h1>Tbilisi Airport transfer</h1>
+      <p>
+        One decision: order a car in the app after you land, or have a driver waiting. Both work — timing and luggage
+        decide.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Bolt after landing</h2>
+      <p>
+        Best if you already have data (eSIM installed), travel light, and land in daytime. You walk out, open the app,
+        and pay the meter-style fare. Night arrivals and large bags make the queue less fun.
+      </p>
+
+      <h2>Prebooked driver</h2>
+      <p>
+        Best for late flights, kids, ski bags, or if you want zero decision-making at 2 a.m. You pay a fixed price and
+        meet at arrivals. Book with your flight number so they track delays.
+      </p>
+
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>Usually better</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Day flight, eSIM ready, one backpack</td>
+            <td>Bolt</td>
+          </tr>
+          <tr>
+            <td>Night flight, family, lots of luggage</td>
+            <td>Prebooked driver</td>
+          </tr>
+          <tr>
+            <td>Straight to Kazbegi / Kakheti</td>
+            <td>Prebooked private transfer</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Book a driver</h2>
+      <p>Affiliate link to a Georgia transfer service. Check the live quote for your date.</p>
+      <a class="btn btn-primary" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
+        >Get transfer quote</a
+      >
+      <a class="btn btn-ghost" href="/esim-georgia">Need eSIM first?</a>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through this link.</p>
+    </aside>
+  </main>
+</BaseLayout>

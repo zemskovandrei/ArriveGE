@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+---
+
+<BaseLayout
+  title="Batumi hotels — seafront vs center | ArriveGE"
+  description="Choose a Batumi hotel by boulevard noise, beach access, and how often you leave the city. Book with real dates."
+  nextHref="/esim-georgia"
+  nextLabel="eSIM for Georgia"
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Black Sea</p>
+      <h1>Batumi hotels</h1>
+      <p>
+        Seafront views cost noise and weekend crowds. One block inland is often quieter for the same money — compare
+        with your dates open.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Boulevard / seafront</h2>
+      <p>
+        Walk out to the promenade. Summer nights are loud. Worth it if the sea is the point of the trip and you are only
+        here a few days.
+      </p>
+
+      <h2>City center</h2>
+      <p>
+        Closer to cafes and the old streets, shorter walks to buses and marshrutkas. Check map distance to the beach —
+        “center” is not always “steps from sand”.
+      </p>
+
+      <h2>Newer towers / outskirts</h2>
+      <p>
+        Better apartments and kitchens, more Bolt rides. Fine for longer stays if you do not need to walk everywhere.
+      </p>
+
+      <ul>
+        <li>Filter free cancellation if your Batumi dates can still move.</li>
+        <li>July–August: book early; “sea view” sells first.</li>
+        <li>Shoulder season: negotiate less, compare more — inventory is soft.</li>
+      </ul>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Search Batumi</h2>
+      <p>Affiliate hotel search. Prices change with dates.</p>
+      <a class="btn btn-primary" href={aff("hotelsBatumi")} target="_blank" rel="noopener sponsored noreferrer"
+        >Browse Batumi hotels</a
+      >
+      <a class="btn btn-ghost" href="/tbilisi-hotels">Need Tbilisi instead?</a>
+      <p class="disclaimer">We may earn a commission from bookings made through this link.</p>
+    </aside>
+  </main>
+</BaseLayout>

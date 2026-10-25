@@ -1,0 +1,46 @@
+---
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  nextHref?: string;
+  nextLabel?: string;
+  homeNote?: boolean;
+}
+
+const { title, description, nextHref, nextLabel, homeNote = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Travelpayouts Drive -->
+    <script is:inline data-cfasync="false" data-no-defer="1" data-cmp-ab="2">
+      (function () {
+        var script = document.createElement("script");
+        script.async = 1;
+        script.setAttribute("data-cmp-ab", "2");
+        script.src = "https://emrld.ltd/NTkwNjM5.js?t=590639";
+        document.head.appendChild(script);
+      })();
+    </script>
+  </head>
+  <body>
+    <SiteNav />
+    <slot />
+    <SiteFooter nextHref={nextHref} nextLabel={nextLabel} homeNote={homeNote} />
+    <script>
+      import "../scripts/main.js";
+    </script>
+  </body>
+</html>

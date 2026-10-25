@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+---
+
+<BaseLayout
+  title="eSIM for Georgia — city vs mountains | ArriveGE"
+  description="Buy a Georgia eSIM before your flight. Choose a city plan for Tbilisi and Batumi, or mountain coverage for Kazbegi and the Military Highway."
+  nextHref="/tbilisi-airport-transfer"
+  nextLabel="airport transfer"
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Buy before takeoff</p>
+      <h1>eSIM for Georgia</h1>
+      <p>
+        Install at home on Wi‑Fi. When you land in Tbilisi, maps and Bolt work without hunting a SIM kiosk.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Pick by route, not by “unlimited”</h2>
+      <p>
+        Georgia’s networks are not equal outside the cities. Magti holds the Military Highway and many mountain villages
+        better. City-focused plans are fine for Tbilisi and Batumi only.
+      </p>
+
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Your trip</th>
+            <th>What to buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tbilisi / Batumi only</td>
+            <td>City eSIM — maps, chat, rideshare</td>
+          </tr>
+          <tr>
+            <td>Kazbegi, Svaneti, Military Highway</td>
+            <td>Mountain eSIM on Magti-class coverage</td>
+          </tr>
+          <tr>
+            <td>Need local calls / SMS</td>
+            <td>Plan that includes minutes, not data-only</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Install checklist</h2>
+      <ul>
+        <li>Buy and install before boarding, on stable Wi‑Fi.</li>
+        <li>Turn on data roaming only for the eSIM line.</li>
+        <li>Keep your home SIM as secondary so banking SMS still arrive if needed.</li>
+        <li>Open the operator page on purchase day — prices and GB change.</li>
+      </ul>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Book connectivity</h2>
+      <p>Affiliate links. Commission if you buy through them. Compare the live plan before checkout.</p>
+      <a class="btn btn-primary" href={aff("esimCity")} target="_blank" rel="noopener sponsored noreferrer"
+        >City eSIM (Tbilisi / Batumi)</a
+      >
+      <a class="btn btn-ghost" href={aff("esimMountains")} target="_blank" rel="noopener sponsored noreferrer"
+        >Mountain eSIM (Kazbegi+)</a
+      >
+      <p class="disclaimer">
+        We may earn a commission. This is not a guarantee of coverage on every trail — check the network listed on the
+        plan page.
+      </p>
+    </aside>
+  </main>
+</BaseLayout>

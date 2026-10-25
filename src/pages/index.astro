@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const needs = [
+  {
+    num: "01",
+    href: "/esim-georgia",
+    title: "Internet from the gate",
+    text: "Install eSIM at home. City plans vs mountain coverage.",
+  },
+  {
+    num: "02",
+    href: "/tbilisi-airport-transfer",
+    title: "Ride from Tbilisi Airport",
+    text: "Bolt on arrival vs a driver waiting with your name.",
+  },
+  {
+    num: "03",
+    href: "/tbilisi-hotels",
+    title: "Where to sleep in Tbilisi",
+    text: "Old Town, Vera, or Vake — by walkability and budget.",
+  },
+  {
+    num: "04",
+    href: "/batumi-hotels",
+    title: "Where to sleep in Batumi",
+    text: "Seafront, center, or quieter blocks away from the boulevard.",
+  },
+  {
+    num: "05",
+    href: "/kazbegi-day-trip",
+    title: "Kazbegi in one day",
+    text: "Book the seat before you land. Gergeti fills up fast in season.",
+  },
+  {
+    num: "+",
+    href: "/kakheti-wine-tour",
+    title: "Kakheti wine day",
+    text: "Driver tour or your own car — pick before the weekend rush.",
+  },
+];
+---
+
+<BaseLayout
+  title="ArriveGE — Get Georgia ready before you land"
+  description="eSIM, airport transfer, hotels, and day trips for Georgia. Book what you need before the plane doors open."
+  homeNote
+>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="brand-hero" data-reveal>Arrive<span>GE</span></h1>
+      <p class="hero-lead" data-reveal data-reveal-delay="100">
+        Georgia starts at landing. Get data, a ride, a bed, and your first day trip sorted before the doors open.
+      </p>
+      <div class="cta-row" data-reveal data-reveal-delay="180">
+        <a class="btn btn-primary" href="/esim-georgia">Get eSIM first</a>
+        <a class="btn btn-ghost" href="#needs">See what to book</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="needs">
+      <p class="section-kicker" data-reveal>Before you fly</p>
+      <h2 data-reveal>Five things every traveler books</h2>
+      <p class="section-lead" data-reveal>
+        Same checklist for every passport. Pick the page that matches what you still need.
+      </p>
+
+      <div class="need-list">
+        {
+          needs.map((item) => (
+            <a class="need-item" href={item.href} data-reveal>
+              <span class="need-num">{item.num}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+              <span class="need-go">Open →</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</BaseLayout>
