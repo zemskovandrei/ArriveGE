@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+import { path } from "../lib/paths";
+---
+
+<BaseLayout
+  title="Flights to Georgia — compare tickets | ArriveGE"
+  description="Compare flights to Tbilisi (TBS), Batumi, or Kutaisi before you land. Then book eSIM and airport transfer."
+  nextHref="/esim-georgia"
+  nextLabel="eSIM for Georgia"
+>
+  <header class="page-hero">
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Before takeoff</p>
+      <h1>Flights to Georgia</h1>
+      <p>
+        Compare tickets to Tbilisi, Batumi, or Kutaisi. After you pick a flight, lock eSIM and a transfer so landing is
+        calm.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Which airport</h2>
+      <ul>
+        <li><strong>Tbilisi (TBS)</strong> — default for city + Kazbegi + Kakheti.</li>
+        <li><strong>Batumi (BUS)</strong> — Black Sea trip; fewer onward options inland.</li>
+        <li><strong>Kutaisi (KUT)</strong> — often cheaper LCC flights; plan a transfer or train to Tbilisi.</li>
+      </ul>
+
+      <h2>After you book the ticket</h2>
+      <ul>
+        <li>Install eSIM before boarding.</li>
+        <li>Prebook airport transfer if you land late or with luggage.</li>
+        <li>Hold hotel with free cancellation until dates are firm.</li>
+      </ul>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Compare flights</h2>
+      <p>Affiliate search. Prices change — check your dates on the live page.</p>
+      <a class="btn btn-primary" href={aff("flights")} target="_blank" rel="noopener sponsored noreferrer"
+        >Search on Aviasales</a
+      >
+      <a class="btn btn-ghost" href={path("esim-georgia")}>Next: eSIM</a>
+      <a class="btn btn-ghost" href={path("tbilisi-airport-transfer")}>Next: transfer</a>
+      <p class="disclaimer">We may earn a commission if you book through this link.</p>
+    </aside>
+  </main>
+</BaseLayout>
