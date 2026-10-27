@@ -8,3 +8,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Shorts / social videos — not part of the website
+shorts/
