@@ -8,8 +8,9 @@ export const affiliateLinks = {
   transfer: "https://gotrip.ge/",
   hotelsTbilisi: "https://www.booking.com/city/ge/tbilisi.html",
   hotelsBatumi: "https://www.booking.com/city/ge/batumi.html",
-  kazbegiTour: "https://www.getyourguide.com/tbilisi-l266/kazbegi-tc766/",
-  kakhetiTour: "https://www.getyourguide.com/tbilisi-l266/kakheti-tc767/",
+  // Travelpayouts Klook — replace with deep links when you generate page-specific ones
+  kazbegiTour: "https://klook.tpm.li/9btfDQm8",
+  kakhetiTour: "https://klook.tpm.li/9btfDQm8",
   carRental: "https://www.rentalcars.com/",
 } as const;
 
