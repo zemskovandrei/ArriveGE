@@ -7,7 +7,7 @@ export const affiliateLinks = {
   hotelsTbilisi: "https://www.booking.com/city/ge/tbilisi.html",
   hotelsBatumi: "https://www.booking.com/city/ge/batumi.html",
   tours: "https://klook.tpm.li/9btfDQm8",
-  flights: "https://aviasales.tpm.li/cAe6WKkK",
+  flights: "https://aviasales.tpm.li/uj274lOV",
   carRental: "https://localrent.tpm.li/x2Ax2mVR",
 } as const;
 
