@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
-import { path } from "../lib/paths";
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/hero.jpg");
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import { path } from "../lib/paths";
   nextHref="/tbilisi-hotels"
   nextLabel="Tbilisi hotels"
 >
-  <header class="page-hero">
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">TBS → city</p>
       <h1>Tbilisi Airport transfer</h1>

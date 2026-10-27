@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { path } from "../lib/paths";
+import { asset, path } from "../lib/paths";
+const heroImage = asset("images/hero.jpg");
+
 
 const needs = [
   {
@@ -53,7 +55,10 @@ const needs = [
   description="eSIM, airport transfer, hotels, and day trips for Georgia. Book what you need before the plane doors open."
   homeNote
 >
-  <header class="hero">
+  <header
+    class="hero has-photo"
+    style={`--hero-image: url('${heroImage}')`}
+  >
     <div class="hero-inner">
       <h1 class="brand-hero" data-reveal>Arrive<span>GE</span></h1>
       <p class="hero-lead" data-reveal data-reveal-delay="100">

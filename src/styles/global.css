@@ -126,32 +126,27 @@ a:hover {
     linear-gradient(160deg, #1c2228 0%, #0a2829 42%, #12151a 100%);
 }
 
+.hero.has-photo {
+  background-color: #12151a;
+  background-image:
+    linear-gradient(to top, rgba(18, 21, 26, 0.94) 6%, rgba(18, 21, 26, 0.55) 42%, rgba(10, 40, 41, 0.35) 100%),
+    var(--hero-image);
+  background-size: cover;
+  background-position: center 35%;
+}
+
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(18, 21, 26, 0.92) 8%, transparent 48%),
-    repeating-linear-gradient(
-      -18deg,
-      transparent 0,
-      transparent 14px,
-      rgba(231, 226, 214, 0.02) 14px,
-      rgba(231, 226, 214, 0.02) 15px
-    );
+    linear-gradient(to top, rgba(18, 21, 26, 0.55) 0%, transparent 45%),
+    radial-gradient(ellipse 80% 50% at 80% 10%, rgba(196, 106, 47, 0.18), transparent 55%);
   pointer-events: none;
-  animation: haze 18s ease-in-out infinite alternate;
 }
 
-@keyframes haze {
-  from {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.04);
-  }
+.hero.has-photo::before {
+  animation: none;
 }
 
 .hero-inner {
@@ -211,11 +206,13 @@ a:hover {
 .btn-primary {
   background: var(--copper);
   color: #1a1008;
+  box-shadow: 0 10px 28px rgba(196, 106, 47, 0.28);
 }
 
 .btn-primary:hover {
   background: var(--copper-hot);
   color: #1a1008;
+  box-shadow: 0 12px 32px rgba(224, 122, 53, 0.35);
 }
 
 .btn-ghost {
@@ -305,13 +302,29 @@ a:hover {
 }
 
 .page-hero {
+  position: relative;
+  overflow: hidden;
   padding: 7.5rem 1.25rem 2.5rem;
   background:
     radial-gradient(ellipse 60% 50% at 80% 0%, rgba(196, 106, 47, 0.22), transparent 55%),
     linear-gradient(180deg, var(--teal-deep), var(--ink));
 }
 
+.page-hero.has-photo {
+  min-height: 18rem;
+  display: grid;
+  align-items: end;
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(to top, rgba(18, 21, 26, 0.92) 8%, rgba(18, 21, 26, 0.55) 55%, rgba(10, 40, 41, 0.4) 100%),
+    var(--page-image);
+  background-size: cover;
+  background-position: center;
+}
+
 .page-hero-inner {
+  position: relative;
+  z-index: 1;
   width: min(100%, var(--max));
   margin: 0 auto;
 }

@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
+import { asset } from "../lib/paths";
+const pageImage = asset("images/page-kazbegi.jpg");
 ---
 
 <BaseLayout
   title="Kakheti wine day — tour vs car | ArriveGE"
   description="Kakheti wine day from Tbilisi: book a tasting tour with a driver, or rent a car if someone stays sober. Decide before the weekend."
 >
-  <header class="page-hero">
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Wine country</p>
       <h1>Kakheti wine day</h1>

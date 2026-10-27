@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
+import { asset } from "../lib/paths";
+const pageImage = asset("images/page-mountains.jpg");
 ---
 
 <BaseLayout
@@ -9,7 +11,7 @@ import { aff } from "../data/affiliates";
   nextHref="/esim-georgia"
   nextLabel="mountain eSIM"
 >
-  <header class="page-hero">
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Mountains</p>
       <h1>Kazbegi in one day</h1>
