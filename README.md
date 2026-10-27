@@ -24,16 +24,14 @@ npm run preview  # preview the build
 
 Edit `src/data/affiliates.ts` and replace the placeholder URLs with your approved affiliate links:
 
-| Key | What it is | Where to get a link |
-| --- | --- | --- |
-| `esimCity` | City eSIM | Airalo (Impact) / Travelpayouts |
-| `esimMountains` | Mountain eSIM | Holafly partners |
-| `transfer` | Airport / private driver | [GoTrip affiliate](https://affiliate.gotrip.ge/en) |
-| `hotelsTbilisi` / `hotelsBatumi` | Hotels | Booking via Travelpayouts |
-| `kazbegiTour` / `kakhetiTour` | Day trips | GetYourGuide affiliate |
-| `carRental` | Cars | Rentalcars / Travelpayouts |
-
-Until you paste real links, buttons open the public product sites (no commission).
+| Key | Partner |
+| --- | --- |
+| `esim` | Yesim |
+| `transfer` | Kiwitaxi |
+| `hotelsTbilisi` / `hotelsBatumi` | Booking (placeholder until Travelpayouts) |
+| `tours` | Klook |
+| `flights` | Aviasales |
+| `carRental` | Localrent |
 
 ## Pages
 
