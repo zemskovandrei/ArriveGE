@@ -2,13 +2,13 @@
  * Travelpayouts partner links for ArriveGE — one link per job.
  */
 export const affiliateLinks = {
-  esim: "https://yesim.tpm.li/uPQWE445",
-  transfer: "https://kiwitaxi.tpm.li/RVF6IxWY",
-  hotelsTbilisi: "https://www.booking.com/city/ge/tbilisi.html",
-  hotelsBatumi: "https://www.booking.com/city/ge/batumi.html",
-  tours: "https://klook.tpm.li/9btfDQm8",
-  flights: "https://aviasales.tpm.li/uj274lOV",
-  carRental: "https://localrent.tpm.li/x2Ax2mVR",
+  esim: "https://yesim.tpm.lv/Lxg3EKum",
+  transfer: "https://kiwitaxi.tpm.lv/iLJ2EER5",
+  hotelsTbilisi: "https://tpm.lv/oPscXl9x",
+  hotelsBatumi: "https://tpm.lv/oPscXl9x",
+  tours: "https://klook.tpm.lv/Bv9YO9la",
+  flights: "https://aviasales.tpm.lv/ng7toe8b",
+  carRental: "https://localrent.tpm.lv/j8aNQG5J",
 } as const;
 
 export type AffiliateKey = keyof typeof affiliateLinks;
