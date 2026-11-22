@@ -2,7 +2,7 @@
  * Travelpayouts partner links for ArriveGE — one link per job.
  */
 export const affiliateLinks = {
-  esim: "https://yesim.tpm.lv/Lxg3EKum",
+  esim: "https://saily.tpm.lv/2N8ZvXs7",
   transfer: "https://kiwitaxi.tpm.lv/iLJ2EER5",
   hotelsTbilisi: "https://tpm.lv/oPscXl9x",
   hotelsBatumi: "https://tpm.lv/oPscXl9x",
