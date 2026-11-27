@@ -1,75 +1,192 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
-import { asset } from "../lib/paths";
-const pageImage = asset("images/hero.jpg");
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/page-mountains.jpg");
+
+const faq = [
+  {
+    q: "Do I need an eSIM in Georgia, or is Wi-Fi enough?",
+    a: "Get mobile data. You need it to order Bolt at the airport, use maps and stay in touch on day trips. Airport Wi-Fi is often too weak to book a ride.",
+  },
+  {
+    q: "Which mobile network is best in Georgia?",
+    a: "Magti is generally the strongest, especially in the mountains. Silknet and Cellfie work well in cities but can be patchy in Upper Svaneti and other remote areas.",
+  },
+  {
+    q: "How much data do I need for a week in Georgia?",
+    a: "About 3 GB is enough for maps, messaging and Bolt on a one-week city trip. Take 10 GB or more if you stream, share a lot of photos or use your phone as a hotspot.",
+  },
+  {
+    q: "Is a local SIM cheaper than an eSIM?",
+    a: "Yes. A Magti SIM or eSIM costs 10 GEL and 20 GB for 30 days costs 30 GEL. But you need to find a store, show your passport and set it up after you land. A travel eSIM works the moment you arrive.",
+  },
+  {
+    q: "Can I buy a SIM card in Kazbegi or Mestia?",
+    a: "Don't count on it. Magti has no stores in Stepantsminda (Kazbegi) or Mestia, so sort out your data in Tbilisi, Kutaisi or Batumi, or before you fly.",
+  },
+  {
+    q: "Will my phone work with an eSIM?",
+    a: "Most iPhones from the XS onward and recent Samsung Galaxy and Google Pixel phones support eSIM. The phone must also be carrier-unlocked. Dial *#06#: if you see an EID number, your phone supports eSIM.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="eSIM for Georgia — city vs mountains | ArriveGE"
-  description="Buy a Georgia eSIM before your flight. Choose a city plan for Tbilisi and Batumi, or mountain coverage for Kazbegi and the Military Highway."
+  title="Best eSIM for Georgia (2026): Prices, Networks & Local SIM vs eSIM | ArriveGE"
+  description="Which eSIM or SIM card to get for Georgia: travel eSIM prices, Magti and Silknet local plans, mountain coverage for Kazbegi and Svaneti, and how much data you need. Checked November 2026."
   nextHref="/tbilisi-airport-transfer"
   nextLabel="airport transfer"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Buy before takeoff</p>
-      <h1>eSIM for Georgia</h1>
+      <h1>Best eSIM for Georgia</h1>
       <p>
-        Install at home on Wi‑Fi. When you land in Tbilisi, maps and Bolt work without hunting a SIM kiosk.
+        Install a travel eSIM at home and you have data the moment you land, ready for Bolt and maps. If you'd rather save
+        money and don't mind a trip to a store, a local Magti SIM is cheaper.
       </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Pick by route, not by “unlimited”</h2>
-      <p>
-        Georgia’s networks are not equal outside the cities. Magti holds the Military Highway and many mountain villages
-        better. City-focused plans are fine for Tbilisi and Batumi only.
-      </p>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Easiest:</strong> a travel eSIM bought before your flight. It works on landing, so you can order Bolt from the airport.</li>
+        <li><strong>Cheapest:</strong> a Magti SIM or eSIM from a city store: 10 GEL for the SIM, then 30 GEL for 20 GB.</li>
+        <li><strong>Going to Kazbegi, Svaneti or Tusheti:</strong> make sure you are on Magti, the strongest network in the mountains.</li>
+        <li><strong>Avoid:</strong> home roaming without checking the price, and expensive tourist packages at Tbilisi airport.</li>
+      </ul>
+      <p><em>Prices last checked: November 2026.</em></p>
 
+      <h2>Travel eSIM vs local SIM</h2>
       <table class="compare">
         <thead>
           <tr>
-            <th>Your trip</th>
-            <th>What to buy</th>
+            <th>Option</th>
+            <th>Price</th>
+            <th>Pros</th>
+            <th>Cons</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Tbilisi / Batumi only</td>
-            <td>City eSIM — maps, chat, rideshare</td>
+            <td>Travel eSIM (e.g. Saily)</td>
+            <td>from $4.79 (1 GB); 10 GB for $30.99</td>
+            <td>Works on landing, no store, no passport</td>
+            <td>Costs more per GB, data only</td>
           </tr>
           <tr>
-            <td>Kazbegi, Svaneti, Military Highway</td>
-            <td>Mountain eSIM on Magti-class coverage</td>
+            <td>Magti SIM / eSIM, city store</td>
+            <td>10 GEL + 20 GB for 30 GEL</td>
+            <td>Cheapest, best mountain coverage, local number</td>
+            <td>Store visit, passport; most stores close on Sundays</td>
           </tr>
           <tr>
-            <td>Need local calls / SMS</td>
-            <td>Plan that includes minutes, not data-only</td>
+            <td>Silknet tourist plan</td>
+            <td>15 GEL (7 days) / 30 GEL (15 days), unlimited</td>
+            <td>Cheap unlimited data</td>
+            <td>Patchy in some mountain areas</td>
+          </tr>
+          <tr>
+            <td>Magti package at Tbilisi airport</td>
+            <td>60–120 GEL</td>
+            <td>Open 24/7 in arrivals</td>
+            <td>Much pricier than in the city</td>
           </tr>
         </tbody>
       </table>
+      <p>
+        Many travelers combine both: a small travel eSIM for the first days, then a Magti SIM if they stay longer or head to
+        the mountains.
+      </p>
+
+      <h2>Saily eSIM plans for Georgia</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Valid</th>
+            <th>Price</th>
+            <th>Good for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 GB</td><td>7 days</td><td>$4.79</td><td>Airport ride and a weekend</td></tr>
+          <tr><td>3 GB</td><td>30 days</td><td>$11.99</td><td>One-week city trip</td></tr>
+          <tr><td>5 GB</td><td>30 days</td><td>$17.99</td><td>1–2 weeks with day trips</td></tr>
+          <tr><td>10 GB</td><td>30 days</td><td>$30.99</td><td>2+ weeks, lots of photos</td></tr>
+          <tr><td>20 GB</td><td>30 days</td><td>$48.99</td><td>Remote work, hotspot</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Hotspot is allowed. The plan activates automatically when you arrive, as long as the eSIM line and data roaming are
+        turned on. <a href={aff("esim")} target="_blank" rel="noopener sponsored noreferrer">See current Saily prices</a>.
+      </p>
+
+      <h2>How much data do you need?</h2>
+      <ul>
+        <li><strong>1–3 GB:</strong> maps, WhatsApp, Bolt and checking reviews on a short city trip.</li>
+        <li><strong>5–10 GB:</strong> two weeks with day trips, Instagram stories and video calls.</li>
+        <li><strong>20 GB or more:</strong> remote work, streaming or sharing a hotspot with your travel partner.</li>
+      </ul>
+
+      <h2>Mountains: Kazbegi, Svaneti, Tusheti</h2>
+      <p>
+        Coverage in Georgia is good in cities but varies in the mountains. Magti is the strongest network there. Silknet and
+        Cellfie can be patchy in Upper Svaneti and at Vardzia.
+      </p>
+      <ul>
+        <li>Buy your SIM before you go: Magti has no stores in Stepantsminda (Kazbegi) or Mestia.</li>
+        <li>Download offline maps of the area in Google Maps or Maps.me before you leave the city.</li>
+        <li>
+          Going to Kazbegi on a tour? See our <a href={path("kazbegi-day-trip")}>Kazbegi day trip guide</a>.
+        </li>
+      </ul>
 
       <h2>Install checklist</h2>
-      <ul>
-        <li>Buy and install before boarding, on stable Wi‑Fi.</li>
-        <li>Turn on data roaming only for the eSIM line.</li>
-        <li>Keep your home SIM as secondary so banking SMS still arrive if needed.</li>
-        <li>Open the operator page on purchase day — prices and GB change.</li>
-      </ul>
+      <ol>
+        <li><strong>Check your phone.</strong> It must support eSIM and be carrier-unlocked. Dial *#06#: an EID number means eSIM is supported.</li>
+        <li><strong>Install at home on Wi-Fi.</strong> Buy and add the eSIM a day or two before the flight. Saily plans can wait up to 180 days before activation.</li>
+        <li><strong>Turn on data roaming for the eSIM line only.</strong> Set the eSIM as your data line so your home SIM doesn't run up roaming charges.</li>
+        <li><strong>Keep your home SIM on for calls and SMS.</strong> You will still get bank codes by text.</li>
+        <li><strong>Install Bolt before you fly</strong> and verify your phone number while you are still at home. Then see <a href={path("tbilisi-airport-transfer")}>how to get from the airport to the city</a>.</li>
+      </ol>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
-      <h2>Book connectivity</h2>
-      <p>Affiliate links. Commission if you buy through them. Compare the live plan before checkout.</p>
+      <h2>Get data before you land</h2>
+      <p>Install at home, works on arrival in Tbilisi. Plans from $4.79.</p>
       <a class="btn btn-primary" href={aff("esim")} target="_blank" rel="noopener sponsored noreferrer"
         >Buy Saily eSIM</a
       >
+      <a class="btn btn-ghost" href={path("tbilisi-airport-transfer")}>Airport to city guide</a>
       <p class="disclaimer">
-        We may earn a commission. This is not a guarantee of coverage on every trail — check the network listed on the
-        plan page.
+        Affiliate disclosure: we may earn a commission if you buy through these links. Coverage on remote trails is never
+        guaranteed.
       </p>
     </aside>
   </main>
