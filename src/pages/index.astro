@@ -48,6 +48,14 @@ const needs = [
     text: "Driver tour or your own car — pick before the weekend rush.",
   },
 ];
+
+const plan = [
+  { num: "A", href: path("georgia-entry-requirements"), title: "Visa & entry rules", text: "Who needs a visa, and the new mandatory travel insurance." },
+  { num: "B", href: path("money-in-georgia"), title: "Money & exchange", text: "Lari rate, cards vs cash, ATMs and tipping." },
+  { num: "C", href: path("tbilisi-3-day-itinerary"), title: "Tbilisi in 3 days", text: "Two days in the city, one day out — with prices." },
+  { num: "D", href: path("mtskheta-day-trip"), title: "Mtskheta & Jvari", text: "UNESCO capital 20 km away. Half a day, 2 GEL by minivan." },
+  { num: "E", href: path("batumi-in-winter"), title: "Batumi in winter", text: "Mild, rainy and half price. Is it worth it?" },
+];
 ---
 
 <BaseLayout
@@ -82,6 +90,25 @@ const needs = [
       <div class="need-list">
         {
           needs.map((item) => (
+            <a class="need-item" href={item.href} data-reveal>
+              <span class="need-num">{item.num}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+              <span class="need-go">Open →</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section" id="plan">
+      <p class="section-kicker" data-reveal>Plan the trip</p>
+      <h2 data-reveal>Guides travelers ask about most</h2>
+      <div class="need-list">
+        {
+          plan.map((item) => (
             <a class="need-item" href={item.href} data-reveal>
               <span class="need-num">{item.num}</span>
               <div>

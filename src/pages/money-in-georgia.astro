@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/hero.jpg");
+
+const faq = [
+  {
+    q: "What currency is used in Georgia?",
+    a: "The Georgian lari (GEL, ₾). In November 2026 1 US dollar is about 2.6 GEL and 1 euro about 2.85 GEL. Prices in shops and restaurants are in lari; some hotels and tours quote in dollars or euros but charge in lari.",
+  },
+  {
+    q: "Should I bring dollars or euros to Georgia?",
+    a: "Either works. US dollars and euros are exchanged everywhere at good rates in the cities. Bring clean, undamaged notes. Most travelers just use a bank card and withdraw some lari at an ATM.",
+  },
+  {
+    q: "Are cards accepted in Georgia?",
+    a: "Yes, widely in Tbilisi and Batumi: restaurants, supermarkets, Bolt, the metro and most hotels take Visa and Mastercard, including contactless. Carry cash for markets, minivans, village guesthouses, mountain taxis and small cafes.",
+  },
+  {
+    q: "Where is the best place to exchange money?",
+    a: "Exchange offices in city centers (for example along Rustaveli Avenue in Tbilisi) usually give better rates than the airport or hotels. Compare the buy and sell rates on the board; the gap should be small.",
+  },
+  {
+    q: "Do I need to tip in Georgia?",
+    a: "Many restaurants add a service charge of 10–18% to the bill. If it's already included, no extra tip is expected. If not, 10% for good service is normal. Taxi drivers and Bolt don't expect tips.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<BaseLayout
+  title="Money in Georgia (2026): Lari Exchange Rate, Cards, ATMs and Tipping | ArriveGE"
+  description="Georgian lari explained for travelers: current rate (1 USD ≈ 2.6 GEL), where to exchange, ATM fees, where cards work, when you need cash, tipping and typical prices."
+  nextHref="/tbilisi-3-day-itinerary"
+  nextLabel="Tbilisi in 3 days"
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Money</p>
+      <h1>Money in Georgia: Lari, Cards &amp; Exchange</h1>
+      <p>
+        Pay by card in the cities, keep 100–200 GEL in cash for markets, minivans and the mountains, and skip the airport
+        exchange desk.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Currency:</strong> Georgian lari (GEL, ₾).</li>
+        <li><strong>Rate:</strong> 1 USD ≈ 2.6 GEL, 1 EUR ≈ 2.85 GEL, 1 GBP ≈ 3.4 GEL.</li>
+        <li><strong>Cards:</strong> accepted almost everywhere in Tbilisi and Batumi, including contactless.</li>
+        <li><strong>Cash:</strong> needed for marshrutkas, markets, Gergeti taxis, village cafes and guesthouses.</li>
+        <li><strong>Exchange:</strong> city-center exchange offices beat the airport and hotels.</li>
+      </ul>
+      <p><em>Rates and prices last checked: November 2026.</em></p>
+
+      <h2>Card, cash or exchange?</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Cost</th>
+            <th>Use it for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pay by card</td>
+            <td>Your bank's foreign fee, often 0–3%</td>
+            <td>Restaurants, shops, hotels, Bolt, metro</td>
+          </tr>
+          <tr>
+            <td>ATM withdrawal</td>
+            <td>Local ATM fee plus your bank's fee</td>
+            <td>Cash for the trip, in one or two larger withdrawals</td>
+          </tr>
+          <tr>
+            <td>Exchange office in the city</td>
+            <td>Small spread, no commission</td>
+            <td>Changing USD or EUR cash</td>
+          </tr>
+          <tr>
+            <td>Airport exchange</td>
+            <td>Worse rates</td>
+            <td>Only a small amount if you must</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>ATMs</h2>
+      <p>
+        ATMs of the big banks (Bank of Georgia, TBC, Liberty) are everywhere in cities and in most towns. Some charge a
+        fixed fee per withdrawal, so take out a larger amount at once. When the ATM or card terminal offers to charge you in
+        your home currency, <strong>choose lari (GEL)</strong> — the "conversion" offered by the machine is almost always
+        worse than your bank's rate.
+      </p>
+
+      <h2>When you need cash</h2>
+      <ul>
+        <li>Marshrutkas (minivans) between cities — for example 20 GEL to <a href={path("kazbegi-day-trip")}>Kazbegi</a>.</li>
+        <li>Local taxis up to Gergeti church and in villages.</li>
+        <li>The Dry Bridge market and food markets.</li>
+        <li>Family wineries and guesthouses in <a href={path("kakheti-wine-tour")}>Kakheti</a> and the mountains.</li>
+        <li>Small bakeries, toilets and parking in rural areas.</li>
+      </ul>
+
+      <h2>Typical prices</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Khachapuri or a few khinkali in a local cafe</td><td>10–25 GEL</td></tr>
+          <tr><td>Dinner for one in a mid-range restaurant</td><td>40–70 GEL</td></tr>
+          <tr><td>Glass of Georgian wine</td><td>10–20 GEL</td></tr>
+          <tr><td>Coffee</td><td>6–10 GEL</td></tr>
+          <tr><td>Bolt ride across central Tbilisi</td><td>5–15 GEL</td></tr>
+          <tr><td>Bolt from Tbilisi Airport to the center</td><td>about 30–40 GEL</td></tr>
+          <tr><td>Marshrutka Tbilisi–Mtskheta</td><td>about 2 GEL</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Tipping</h2>
+      <p>
+        Check the bill first: many restaurants already add a 10–18% service charge. If there is none, leave around 10% for
+        good service. Tips aren't expected in taxis, cafes with counter service or shops. Tour guides and drivers on
+        private day trips appreciate 10–20 GEL per person.
+      </p>
+
+      <h2>Scams and small annoyances</h2>
+      <ul>
+        <li><strong>Street taxis without a meter</strong> may overcharge tourists — use Bolt or a pre-booked transfer.</li>
+        <li><strong>Menus without prices</strong> in tourist areas: ask before you order.</li>
+        <li><strong>"Home currency" conversion</strong> at terminals and ATMs: always pick GEL.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Fewer cash surprises</h2>
+      <p>Prepaid rides and data mean you don't need lari the moment you land.</p>
+      <a class="btn btn-primary" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
+        >Prepaid airport transfer</a
+      >
+      <a class="btn btn-ghost" href={aff("esim")} target="_blank" rel="noopener sponsored noreferrer"
+        >Georgia eSIM</a
+      >
+      <a class="btn btn-ghost" href={path("georgia-entry-requirements")}>Entry rules &amp; insurance</a>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>
