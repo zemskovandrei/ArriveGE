@@ -3,66 +3,224 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
 import { asset, path } from "../lib/paths";
 const pageImage = asset("images/hero.jpg");
+
+const faq = [
+  {
+    q: "How much is a taxi from Tbilisi Airport to the city center?",
+    a: "Bolt or Yandex Go usually cost 30–40 GEL. The official TBS Taxi charges a fixed 40 GEL for destinations up to 19.9 km from the airport, which covers the center.",
+  },
+  {
+    q: "Does bus 337 run 24 hours?",
+    a: "No. It leaves the airport roughly between 07:00 and 23:00. For a night arrival, use Bolt, TBS Taxi or a pre-booked transfer.",
+  },
+  {
+    q: "Can I pay for the bus with cash?",
+    a: "It is better to tap a contactless bank card or phone. Cash is accepted on some buses only, and a cash fare doesn't include the 90 minutes of free transfers.",
+  },
+  {
+    q: "Is there a train from Tbilisi Airport?",
+    a: "The airport has a railway station, but trains were not running as of November 2026.",
+  },
+  {
+    q: "Does the metro go to the airport?",
+    a: "No. Bus 337 stops at Avlabari and Isani metro stations, and you can transfer there within the same 90-minute fare.",
+  },
+  {
+    q: "How long does it take to get from the airport to the city?",
+    a: "About 25–30 minutes by car and about an hour by bus.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Tbilisi Airport transfer — Bolt vs prebooked driver | ArriveGE"
-  description="Choose Bolt after landing or a prebooked driver from Tbilisi Airport (TBS). When each option is cheaper and calmer."
+  title="Tbilisi Airport to City Center (2026): Bus 337, Bolt, Taxi & Transfer Prices | ArriveGE"
+  description="Every way from Tbilisi Airport (TBS) to the city center: bus 337 for 1 GEL, Bolt for 30–40 GEL, fixed-fare taxi and pre-booked transfers. Prices checked November 2026."
   nextHref="/tbilisi-hotels"
   nextLabel="Tbilisi hotels"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">TBS → city</p>
-      <h1>Tbilisi Airport transfer</h1>
+      <h1>Tbilisi Airport to City Center</h1>
       <p>
-        One decision: order a car in the app after you land, or have a driver waiting. Both work — timing and luggage
-        decide.
+        The airport is about 17 km from the center. Most travelers should take Bolt for 30–40 GEL (25–30 minutes). On a
+        tight budget, bus 337 costs 1 GEL and takes about an hour.
       </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Bolt after landing</h2>
-      <p>
-        Best if you already have data (eSIM installed), travel light, and land in daytime. You walk out, open the app,
-        and pay the meter-style fare. Night arrivals and large bags make the queue less fun.
-      </p>
+      <h2>Quick answer: which option is right for you?</h2>
+      <ul>
+        <li><strong>Cheapest:</strong> bus 337, 1 GEL, runs roughly 07:00–23:00.</li>
+        <li><strong>Best value door to door:</strong> Bolt, 30–40 GEL. You need mobile data to book.</li>
+        <li>
+          <strong>Landing late at night, or no mobile data:</strong> a pre-booked transfer or the airport's fixed-fare TBS
+          Taxi (40 GEL).
+        </li>
+        <li><strong>Family or lots of luggage:</strong> a pre-booked transfer or Bolt XL (up to 6 seats).</li>
+        <li><strong>Avoid:</strong> drivers who walk up to you in the arrivals hall offering a ride.</li>
+      </ul>
+      <p><em>Prices last checked: November 2026.</em></p>
 
-      <h2>Prebooked driver</h2>
-      <p>
-        Best for late flights, kids, ski bags, or if you want zero decision-making at 2 a.m. You pay a fixed price and
-        meet at arrivals. Book with your flight number so they track delays.
-      </p>
-
+      <h2>All options compared</h2>
       <table class="compare">
         <thead>
           <tr>
-            <th>Situation</th>
-            <th>Usually better</th>
+            <th>Option</th>
+            <th>Price</th>
+            <th>Time</th>
+            <th>Hours</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Day flight, eSIM ready, one backpack</td>
-            <td>Bolt</td>
+            <td>Bus 337</td>
+            <td>1 GEL (about 1.50 GEL on a foreign card)</td>
+            <td>~60 min</td>
+            <td>~07:00–23:00</td>
           </tr>
           <tr>
-            <td>Night flight, family, lots of luggage</td>
-            <td>Prebooked driver</td>
+            <td>Bolt / Yandex Go</td>
+            <td>30–40 GEL</td>
+            <td>25–30 min</td>
+            <td>24/7</td>
           </tr>
           <tr>
-            <td>Straight to Kazbegi / Kakheti</td>
-            <td>Prebooked private transfer</td>
+            <td>TBS Taxi (official, fixed fare)</td>
+            <td>40 GEL up to 19.9 km, 50 GEL beyond</td>
+            <td>25–30 min</td>
+            <td>24/7</td>
+          </tr>
+          <tr>
+            <td>Pre-booked transfer</td>
+            <td>from ~55 GEL</td>
+            <td>25–30 min</td>
+            <td>24/7</td>
+          </tr>
+          <tr>
+            <td>Train</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Not running (Nov 2026)</td>
           </tr>
         </tbody>
       </table>
+      <p>Prices in Georgian lari (GEL). Ride-hailing fares rise at night and when demand is high.</p>
+
+      <h2>Bus 337: the 1 GEL option</h2>
+      <p>Bus 337 is the cheapest way into Tbilisi. It runs from the airport to the central railway station through the city center.</p>
+      <ol>
+        <li><strong>Find the stop.</strong> Walk out of the arrivals hall. The municipal bus stop is right in front of the terminal.</li>
+        <li>
+          <strong>Pay by tapping your card.</strong> Tap a contactless bank card or phone wallet when you board. A Georgian
+          card pays 1 GEL; foreign cards are charged about 1.50 GEL. The fare covers 90 minutes of unlimited rides, so a
+          transfer to the metro is included. There is no need to tap off.
+        </li>
+        <li>
+          <strong>Optional: get a transport card.</strong> The blue card costs 2 GEL at the Bank of Georgia counter in
+          arrivals. It is worth it only if you plan to use day passes.
+        </li>
+        <li>
+          <strong>Get off at the right stop.</strong> Freedom Square / Pushkin Park for the Old Town and Sololaki; Avlabari
+          metro for Avlabari and Metekhi; Station Square for the central railway station.
+        </li>
+      </ol>
+      <p>
+        Buses leave the airport roughly between 07:00 and 23:00, every 15–20 minutes. The ride takes about an hour, longer
+        at rush hour.
+      </p>
+      <p>
+        <strong>Tip:</strong> Parts of Rustaveli Avenue were closed to traffic in the second half of 2026 and the bus was
+        diverted. Check the live route in Google Maps before you go.
+      </p>
+
+      <h2>Bolt: the easiest way for most travelers</h2>
+      <p>
+        Bolt is the main ride-hailing app in Tbilisi. You see the fare before you confirm, and the driver is tracked. From
+        the airport to the center it usually costs 30–40 GEL.
+      </p>
+      <ul>
+        <li><strong>Set it up before you fly.</strong> Install Bolt and verify your phone number at home. Verification by SMS can fail on arrival.</li>
+        <li>
+          <strong>Have mobile data ready.</strong> Airport Wi-Fi is often too weak to match you with a driver. An eSIM
+          bought in advance saves the hassle —
+          <a href={aff("esim")} target="_blank" rel="noopener sponsored noreferrer">get an eSIM for Georgia</a>.
+        </li>
+        <li><strong>Where to meet the driver.</strong> Exit the terminal. The pickup area is right in front, next to the bus stop.</li>
+        <li><strong>Pay by card or cash.</strong> Link a card in the app or pay the driver in lari.</li>
+        <li><strong>Traveling with a group?</strong> Choose Bolt XL for up to 6 people.</li>
+      </ul>
+      <p>Yandex Go also works in Tbilisi and is often a little cheaper. It is worth comparing both apps.</p>
+
+      <h2>Pre-booked transfer: worth it at night and with family</h2>
+      <p>
+        A pre-booked transfer costs from about 55 GEL. The price is fixed when you book, and the driver waits for you in
+        arrivals with a name sign. Book with your flight number so the driver tracks delays.
+      </p>
+      <p>It is worth the extra money when:</p>
+      <ul>
+        <li>your flight lands between midnight and 06:00, when the buses are not running;</li>
+        <li>you travel with children, a car seat or a lot of luggage;</li>
+        <li>you have no mobile data on arrival;</li>
+        <li>you are going straight to Kazbegi or Kakheti;</li>
+        <li>you want a fixed price with no surprises after a long flight.</li>
+      </ul>
+      <p>
+        For a solo traveler landing in the daytime with mobile data, Bolt is usually cheaper.
+        <a href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer">Compare transfer prices for your date</a>.
+      </p>
+
+      <h2>Mistakes to avoid on arrival</h2>
+      <ol>
+        <li>
+          <strong>Taking a ride from drivers who approach you.</strong> Drivers in the arrivals hall often ask 60 GEL or
+          more, sometimes far more, and some even claim that Bolt is not working. Book through the app or use the official
+          fixed-fare TBS Taxi.
+        </li>
+        <li><strong>Getting into a car that doesn't match the app.</strong> Check the plate number and the driver's name against Bolt before you get in.</li>
+        <li>
+          <strong>Changing all your money at the airport.</strong> Airport exchange rates are worse than in the city. Change
+          only what you need for the first day. US dollars usually get a better rate than euros.
+        </li>
+        <li>
+          <strong>Using a machine that isn't an ATM.</strong> The payment terminals (payboxes) after customs do not give out
+          cash. Look for bank ATMs instead: Bank of Georgia (orange) charges a percentage fee, TBC (light blue) a flat 5 GEL.
+        </li>
+        <li>
+          <strong>Overpaying for a SIM card.</strong> The Magti desk in arrivals is open 24 hours, but airport tourist
+          packages cost more than in the city. If you only need data, an eSIM set up before your flight is easier —
+          <a href={path("esim-georgia")}>see our eSIM guide</a>.
+        </li>
+      </ol>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
       <h2>Book a driver</h2>
-      <p>Affiliate links. Compare the live quote for your flight date.</p>
+      <p>Fixed price, meet at arrivals, flight tracking. Compare the live quote for your flight date.</p>
       <a class="btn btn-primary" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
         >Book airport transfer</a
       >

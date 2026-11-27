@@ -372,8 +372,36 @@ a:hover {
   color: var(--mist);
 }
 
-.prose ul {
+.prose ul,
+.prose ol {
   padding-left: 1.15rem;
+}
+
+.prose h3 {
+  font-size: 1.05rem;
+  margin: 1.4rem 0 0.35rem;
+}
+
+.prose h3 + p {
+  margin-top: 0;
+}
+
+.prose strong {
+  color: var(--stone);
+}
+
+.prose a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .prose .compare {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.88rem;
+  }
 }
 
 .prose li + li {
