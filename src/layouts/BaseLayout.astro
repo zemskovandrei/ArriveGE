@@ -2,6 +2,7 @@
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import "../styles/global.css";
+import { hasRu, localePath, parsePath } from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -12,16 +13,38 @@ interface Props {
 }
 
 const { title, description, nextHref, nextLabel, homeNote = false } = Astro.props;
+
+const { lang, slug } = parsePath(Astro.url.pathname);
+const site = Astro.site ?? new URL("https://arrive.ge");
+const canonical = new URL(localePath(lang, slug), site).href;
+const bilingual = hasRu(slug);
+const enUrl = new URL(localePath("en", slug), site).href;
+const ruUrl = new URL(localePath("ru", slug), site).href;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {
+      bilingual && (
+        <>
+          <link rel="alternate" hreflang="en" href={enUrl} />
+          <link rel="alternate" hreflang="ru" href={ruUrl} />
+          <link rel="alternate" hreflang="x-default" href={enUrl} />
+        </>
+      )
+    }
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "ru" ? "ru_RU" : "en_US"} />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="any" />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
@@ -48,9 +71,9 @@ const { title, description, nextHref, nextLabel, homeNote = false } = Astro.prop
     </script>
   </head>
   <body>
-    <SiteNav />
+    <SiteNav lang={lang} slug={slug} />
     <slot />
-    <SiteFooter nextHref={nextHref} nextLabel={nextLabel} homeNote={homeNote} />
+    <SiteFooter nextHref={nextHref} nextLabel={nextLabel} homeNote={homeNote} lang={lang} />
     <script>
       import "../scripts/main.js";
     </script>
