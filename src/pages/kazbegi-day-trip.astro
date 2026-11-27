@@ -1,56 +1,178 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
-import { asset } from "../lib/paths";
+import { asset, path } from "../lib/paths";
 const pageImage = asset("images/page-mountains.jpg");
+
+const faq = [
+  {
+    q: "How long is the drive from Tbilisi to Kazbegi?",
+    a: "About 150 km, usually 3–3.5 hours without stops. With sightseeing stops on the Military Road, plan 6–8 hours for the way up alone.",
+  },
+  {
+    q: "Can I do Kazbegi as a day trip?",
+    a: "Yes, most visitors do. Group tours take 10–12 hours return. If you want to hike to Gergeti or the Juta and Truso valleys, stay a night in Stepantsminda.",
+  },
+  {
+    q: "How do I get up to Gergeti Trinity Church?",
+    a: "A local taxi from Stepantsminda costs around 50–70 GEL per car or 15–20 GEL per person return, with about 45 minutes of waiting time. Big tour buses can't drive up, so tours use these taxis.",
+  },
+  {
+    q: "Is the road to Kazbegi open in winter?",
+    a: "The highway is open all year, but the Jvari Pass can close several times each winter because of snow and avalanche risk, usually for a few hours and sometimes for 1–3 days. Check the road status before you go.",
+  },
+  {
+    q: "What is the cheapest way to get to Kazbegi?",
+    a: "The marshrutka (minivan) from Didube station costs 20 GEL, cash only, and takes about 3.5 hours. There are around 11 departures a day between 08:00 and 19:00.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Kazbegi day trip from Tbilisi | ArriveGE"
-  description="Book a Kazbegi / Gergeti day trip before you land. Group tour vs private driver — what to reserve while seats are open."
+  title="Kazbegi Day Trip from Tbilisi (2026): Tour vs Driver vs Marshrutka, Prices & Tips | ArriveGE"
+  description="How to visit Kazbegi and Gergeti Trinity Church from Tbilisi in one day: group tours from $45, private drivers from 190 GEL, marshrutka for 20 GEL. Stops, winter road closures and tips."
   nextHref="/esim-georgia"
   nextLabel="mountain eSIM"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Mountains</p>
-      <h1>Kazbegi in one day</h1>
+      <h1>Kazbegi Day Trip from Tbilisi</h1>
       <p>
-        Long road day from Tbilisi. Reserve the seat before arrival — popular dates sell out, and mountain weather does
-        not wait for jet lag.
+        Kazbegi (Stepantsminda) is about 150 km north of Tbilisi on the Georgian Military Road. Most people go on a group
+        tour for around $45, or hire a private driver to stop wherever they like.
       </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Group day tour</h2>
-      <p>
-        Cheapest per seat. Fixed stops, fixed return. Good if you are solo or two people and do not want to manage a car
-        on the Military Highway.
-      </p>
-
-      <h2>Private driver</h2>
-      <p>
-        Leave when you want, linger at Gergeti, skip crowded lunch stops. Costs more; worth it for families or if you
-        only have one mountain day.
-      </p>
-
-      <h2>Before you book</h2>
+      <h2>Quick answer</h2>
       <ul>
-        <li>Check cancellation if clouds can kill the view day.</li>
-        <li>Wear real shoes for the Gergeti walk — not hotel slippers.</li>
-        <li>Install mountain-capable eSIM if you need maps offline failures covered.</li>
+        <li><strong>Easiest and cheapest with sightseeing:</strong> a group day tour, from about $45 per person.</li>
+        <li><strong>Most flexible:</strong> a private driver, from about 190 GEL per car. Good value for 3–4 people.</li>
+        <li><strong>Cheapest transport only:</strong> marshrutka from Didube station, 20 GEL, no stops on the way.</li>
+        <li><strong>Best time:</strong> mid-June to the end of September. In winter the Jvari Pass sometimes closes.</li>
       </ul>
+      <p><em>Prices last checked: November 2026.</em></p>
+
+      <h2>Ways to get there compared</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Price</th>
+            <th>Stops on the way</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Group day tour</td>
+            <td>from ~$45 per person</td>
+            <td>Yes, fixed</td>
+            <td>Solo travelers and couples</td>
+          </tr>
+          <tr>
+            <td>Private driver</td>
+            <td>from ~190 GEL per car</td>
+            <td>Yes, your choice</td>
+            <td>Families, groups, photographers</td>
+          </tr>
+          <tr>
+            <td>Marshrutka (minivan)</td>
+            <td>20 GEL, cash</td>
+            <td>No</td>
+            <td>Budget, staying overnight</td>
+          </tr>
+          <tr>
+            <td>Shared taxi from Didube</td>
+            <td>40–60 GEL per seat</td>
+            <td>Rarely</td>
+            <td>Faster than the minivan</td>
+          </tr>
+          <tr>
+            <td>Rental car</td>
+            <td>from ~$35/day</td>
+            <td>Yes, your choice</td>
+            <td>Confident drivers, summer only</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>What you see on the way</h2>
+      <ol>
+        <li><strong>Zhinvali reservoir and Ananuri fortress</strong> — a castle and church above turquoise water, about an hour from Tbilisi.</li>
+        <li><strong>Pasanauri</strong> — a common lunch stop, known for khinkali.</li>
+        <li><strong>Gudauri and the Friendship Monument</strong> — the big mosaic viewpoint over the Devil's Valley.</li>
+        <li><strong>Jvari Pass</strong> — the highest point of the road, about 2,400 m.</li>
+        <li><strong>Stepantsminda and Gergeti Trinity Church</strong> — the hilltop church below Mount Kazbek, the photo everyone comes for.</li>
+      </ol>
+      <p>
+        Group tours usually cover all of these. If you want extras like the Sno valley stone heads, Juta or the Truso valley,
+        book a private driver or a tour that lists them.
+      </p>
+
+      <h2>Getting up to Gergeti Trinity Church</h2>
+      <p>
+        The church is a 6 km drive above Stepantsminda. Local taxis wait in the town square and charge around 50–70 GEL per
+        car or 15–20 GEL per person return, including about 45 minutes at the top. Large tour buses can't drive up, so check
+        whether this ride is included in your tour price.
+      </p>
+      <p>Fit walkers can also hike up from the village. Allow a few hours and wear proper shoes.</p>
+
+      <h2>Winter: will the road be open?</h2>
+      <p>
+        The road is open all year, but the Jvari Pass has avalanche risk. It can close several times each winter, usually for
+        a few hours and sometimes for 1–3 days. Book a tour with free cancellation between December and April, and check the
+        news the evening before.
+      </p>
+
+      <h2>Before you go</h2>
+      <ul>
+        <li><strong>Bring layers.</strong> It is much colder at the pass than in Tbilisi, even in summer.</li>
+        <li><strong>Carry cash.</strong> The marshrutka, Gergeti taxis and village cafes often take cash only.</li>
+        <li>
+          <strong>Sort out mobile data in Tbilisi.</strong> Coverage is patchy in places and there are no SIM shops in
+          Kazbegi — see <a href={path("esim-georgia")}>our eSIM guide</a>.
+        </li>
+        <li><strong>Download offline maps</strong> before you leave the city.</li>
+        <li><strong>Choose free cancellation.</strong> Clouds can hide Mount Kazbek all day, and some tours let you change dates.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
       <h2>Reserve the day</h2>
-      <p>Affiliate tour search for Kazbegi from Tbilisi. Confirm pickup time on the product page.</p>
+      <p>Group and private Kazbegi tours from Tbilisi with hotel pickup. Check whether the Gergeti ride is included.</p>
       <a class="btn btn-primary" href={aff("tours")} target="_blank" rel="noopener sponsored noreferrer"
         >See Kazbegi tours</a
       >
-      <p class="disclaimer">We may earn a commission if you book through these links.</p>
+      <a class="btn btn-ghost" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
+        >Private driver / transfer</a
+      >
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
     </aside>
   </main>
 </BaseLayout>

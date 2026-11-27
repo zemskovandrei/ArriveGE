@@ -1,70 +1,159 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
-import { asset } from "../lib/paths";
+import { asset, path } from "../lib/paths";
 const pageImage = asset("images/page-kazbegi.jpg");
+
+const faq = [
+  {
+    q: "How far is Kakheti from Tbilisi?",
+    a: "Sighnaghi is about 110 km east of Tbilisi, roughly 2 hours by car. Telavi is a similar distance over the Gombori pass. A day tour usually lasts 9–12 hours.",
+  },
+  {
+    q: "Are wine tastings included in Kakheti tours?",
+    a: "Not always. Some tours include two or three tastings and lunch; others charge tastings separately at each winery. Read the 'included' list before you book.",
+  },
+  {
+    q: "What is qvevri wine?",
+    a: "Wine fermented and aged in large clay vessels (qvevri) buried in the ground. It is Georgia's traditional method and is on UNESCO's list of intangible cultural heritage. Amber (orange) wines made this way are the region's signature.",
+  },
+  {
+    q: "When is the best time to visit Kakheti?",
+    a: "September and October, during the grape harvest (rtveli), when wineries are busiest and the valley is golden. Spring and early summer are also lovely and less crowded.",
+  },
+  {
+    q: "Can I drive myself to Kakheti?",
+    a: "Yes, the roads are good. But the driver should not drink at all, so a rental only works if someone in your group skips the tastings, or if you stay overnight and taste near your guesthouse.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Kakheti wine day — tour vs car | ArriveGE"
-  description="Kakheti wine day from Tbilisi: book a tasting tour with a driver, or rent a car if someone stays sober. Decide before the weekend."
+  title="Kakheti Wine Tour from Tbilisi (2026): Sighnaghi, Wineries, Prices & Tips | ArriveGE"
+  description="Plan a Kakheti wine day from Tbilisi: group vs private tours, Sighnaghi and Telavi routes, qvevri wine, harvest season and whether to rent a car."
+  nextHref="/kazbegi-day-trip"
+  nextLabel="Kazbegi day trip"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Wine country</p>
-      <h1>Kakheti wine day</h1>
-      <p>You are tasting qvevri wine. Someone has to drive back. That single fact decides tour vs rental.</p>
+      <h1>Kakheti Wine Tour from Tbilisi</h1>
+      <p>
+        Kakheti is Georgia's main wine region, about 2 hours east of Tbilisi. You will be tasting, so someone else should
+        drive: for most travelers that means a tour.
+      </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Guided tasting tour</h2>
-      <p>
-        Driver included. Two or three wineries, lunch, return to Tbilisi. Best default for couples and small groups who
-        came to drink, not to navigate village roads.
-      </p>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Most travelers:</strong> a small-group day tour from Tbilisi, from about $59 per person.</li>
+        <li><strong>Couples and groups who want their own pace:</strong> a private tour or driver.</li>
+        <li><strong>Two days or more:</strong> stay a night in Sighnaghi or Telavi and taste without rushing.</li>
+        <li><strong>Best season:</strong> September–October, during the grape harvest.</li>
+      </ul>
 
-      <h2>Rental car</h2>
-      <p>
-        More freedom on timing and overnight stays in the valley. Only if one adult stays under the limit and you are
-        comfortable with Georgian highway driving.
-      </p>
-
+      <h2>Tour vs private driver vs rental car</h2>
       <table class="compare">
         <thead>
           <tr>
-            <th>Group</th>
-            <th>Usually book</th>
+            <th>Option</th>
+            <th>Typical price</th>
+            <th>Pros</th>
+            <th>Cons</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Everyone wants to taste</td>
-            <td>Tour with driver</td>
-          </tr>
-          <tr>
-            <td>Multi-day Kakheti stay</td>
-            <td>Car rental</td>
-          </tr>
-          <tr>
-            <td>Solo traveler</td>
             <td>Small-group tour</td>
+            <td>from ~$59 per person</td>
+            <td>Cheapest, everything planned</td>
+            <td>Fixed wineries and timing</td>
+          </tr>
+          <tr>
+            <td>Private tour / driver</td>
+            <td>from ~$105 per person</td>
+            <td>Your route, your pace</td>
+            <td>Costs more for 1–2 people</td>
+          </tr>
+          <tr>
+            <td>Rental car</td>
+            <td>per day + fuel</td>
+            <td>Freedom, overnight stays</td>
+            <td>The driver can't taste</td>
           </tr>
         </tbody>
       </table>
+      <p><em>Prices checked November 2026; they vary by season and what's included.</em></p>
+
+      <h2>Two classic routes</h2>
+      <h3>Sighnaghi route</h3>
+      <p>
+        Sighnaghi, the hilltop "city of love" with old walls and views over the Alazani valley, plus Bodbe Monastery and one
+        or two wineries. The most popular day trip and the best for views.
+      </p>
+      <h3>Telavi route</h3>
+      <p>
+        Telavi and the wine estates around it: Tsinandali, Alaverdi Monastery, Gremi and the Kvareli wine tunnels. More
+        wineries and history, fewer viewpoints.
+      </p>
+      <p>Many tours combine highlights of both. Check the stop list if one place matters to you.</p>
+
+      <h2>What to taste</h2>
+      <ul>
+        <li><strong>Qvevri amber wine</strong> — white grapes fermented on their skins in clay jars; Georgia's signature.</li>
+        <li><strong>Saperavi</strong> — the main red grape, deep and dark.</li>
+        <li><strong>Kindzmarauli</strong> — a naturally semi-sweet red from the Kvareli area.</li>
+        <li><strong>Chacha</strong> — strong grape brandy, often offered at the end. Small sips.</li>
+      </ul>
+
+      <h2>Tips for the day</h2>
+      <ul>
+        <li><strong>Check what's included:</strong> tastings, lunch and entrance fees are not always in the price.</li>
+        <li><strong>Eat before tastings</strong> and drink water between them.</li>
+        <li><strong>Buy bottles at small family wineries</strong> — many don't export, so it's the only chance.</li>
+        <li><strong>Packing wine in your bag?</strong> Wrap bottles in clothes and check your airline's liquid rules.</li>
+        <li>
+          <strong>Combining with the mountains?</strong> Do Kakheti and <a href={path("kazbegi-day-trip")}>Kazbegi</a> on different
+          days; both are full-day trips.
+        </li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
       <h2>Book the day</h2>
-      <p>Affiliate links. Compare pickup time and winery count on the live page.</p>
+      <p>Compare group and private Kakheti tours: pickup time, number of wineries and whether tastings are included.</p>
       <a class="btn btn-primary" href={aff("tours")} target="_blank" rel="noopener sponsored noreferrer"
         >Kakheti wine tours</a
       >
       <a class="btn btn-ghost" href={aff("carRental")} target="_blank" rel="noopener sponsored noreferrer"
         >Rent a car</a
       >
-      <p class="disclaimer">We may earn a commission if you book through these links.</p>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
     </aside>
   </main>
 </BaseLayout>

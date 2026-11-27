@@ -3,59 +3,153 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
 import { asset, path } from "../lib/paths";
 const pageImage = asset("images/page-sea.jpg");
+
+const faq = [
+  {
+    q: "What is the best area to stay in Batumi?",
+    a: "For a short beach trip, the Old Town or a hotel one or two blocks from the Boulevard: you can walk to the sea, restaurants and Europe Square. For a longer stay with a kitchen, look at the newer towers on the south side.",
+  },
+  {
+    q: "When is the beach season in Batumi?",
+    a: "June to September. July and August are the busiest and most expensive months, so book early. May and October are quieter and cheaper but the sea is cooler and rain is more likely.",
+  },
+  {
+    q: "Is the beach in Batumi sandy?",
+    a: "No, the city beach is pebbly. Bring water shoes if you find pebbles uncomfortable.",
+  },
+  {
+    q: "How do I get to Batumi from Tbilisi?",
+    a: "The train takes about 5 hours and is the most comfortable option. You can also fly into Batumi airport directly, or take a bus or marshrutka.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Batumi hotels — seafront vs center | ArriveGE"
-  description="Choose a Batumi hotel by boulevard noise, beach access, and how often you leave the city. Book with real dates."
+  title="Where to Stay in Batumi (2026): Seafront, Old Town or New Towers? | ArriveGE"
+  description="Choose the right area in Batumi: Old Town for walking, Boulevard seafront for views, new towers for apartments. Noise, beach access, season and booking tips."
   nextHref="/esim-georgia"
   nextLabel="eSIM for Georgia"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Black Sea</p>
-      <h1>Batumi hotels</h1>
+      <h1>Where to Stay in Batumi</h1>
       <p>
-        Seafront views cost noise and weekend crowds. One block inland is often quieter for the same money — compare
-        with your dates open.
+        Short beach trip: stay in the Old Town or one block from the Boulevard. Long stay with a kitchen: an apartment in the
+        new towers. Sea views cost extra and sell out first in summer.
       </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Boulevard / seafront</h2>
+      <h2>Areas at a glance</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Best for</th>
+            <th>To the beach</th>
+            <th>Noise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Old Town</td>
+            <td>First visit, walking, food</td>
+            <td>5–10 min walk</td>
+            <td>Medium</td>
+          </tr>
+          <tr>
+            <td>Boulevard seafront</td>
+            <td>Sea views, short stays</td>
+            <td>Across the road</td>
+            <td>Loud in summer</td>
+          </tr>
+          <tr>
+            <td>New towers (south side)</td>
+            <td>Apartments, long stays, families</td>
+            <td>Walk or short Bolt ride</td>
+            <td>Quiet, but construction nearby</td>
+          </tr>
+          <tr>
+            <td>Outskirts / Makhinjauri / Gonio</td>
+            <td>Calmer beach holiday</td>
+            <td>Often beachfront</td>
+            <td>Quiet</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Old Town</h2>
       <p>
-        Walk out to the promenade. Summer nights are loud. Worth it if the sea is the point of the trip and you are only
-        here a few days.
+        Restored 19th-century streets around Europe Square and Piazza, full of cafes and restaurants. You can walk to the
+        Boulevard and the beach. The best base for a first visit of 2–4 nights.
       </p>
 
-      <h2>City center</h2>
+      <h2>Boulevard seafront</h2>
       <p>
-        Closer to cafes and the old streets, shorter walks to buses and marshrutkas. Check map distance to the beach —
-        “center” is not always “steps from sand”.
+        The long promenade along the sea, with bike lanes and parks. Waking up to a sea view is the point. The trade-off:
+        summer nights are busy and loud, and "sea view" rooms cost more. A hotel one block inland is often quieter for the
+        same money.
       </p>
 
-      <h2>Newer towers / outskirts</h2>
+      <h2>New towers on the south side</h2>
       <p>
-        Better apartments and kitchens, more Bolt rides. Fine for longer stays if you do not need to walk everywhere.
+        Batumi's skyline of high-rises, mostly apartments with kitchens and balconies. Good value for longer stays and
+        families. Check the map: some towers are a long walk from the Old Town, and many buildings around them are still
+        under construction.
       </p>
 
+      <h2>Outskirts: Makhinjauri and Gonio</h2>
+      <p>
+        North and south of the city, closer to the botanical garden or Gonio fortress. Calmer beaches, but you will rely on
+        Bolt or buses to get into town.
+      </p>
+
+      <h2>Booking tips</h2>
       <ul>
-        <li>Filter free cancellation if your Batumi dates can still move.</li>
-        <li>July–August: book early; “sea view” sells first.</li>
-        <li>Shoulder season: negotiate less, compare more — inventory is soft.</li>
+        <li><strong>July–August:</strong> book early, sea-view rooms go first.</li>
+        <li><strong>May, June, September:</strong> good weather and better prices; compare more, there is plenty of choice.</li>
+        <li><strong>Check construction</strong> in recent reviews, especially in the new-towers area.</li>
+        <li><strong>Choose free cancellation</strong> while your dates can still move.</li>
+        <li>
+          <strong>Coming from Tbilisi?</strong> See <a href={path("tbilisi-hotels")}>where to stay in Tbilisi</a> for the first
+          part of your trip.
+        </li>
       </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
       <h2>Search Batumi</h2>
-      <p>Affiliate hotel search. Prices change with dates.</p>
+      <p>Pick your area, set your dates and compare sea view vs one block inland.</p>
       <a class="btn btn-primary" href={aff("hotelsBatumi")} target="_blank" rel="noopener sponsored noreferrer"
         >Browse Batumi hotels</a
       >
       <a class="btn btn-ghost" href={path("tbilisi-hotels")}>Need Tbilisi instead?</a>
-      <p class="disclaimer">We may earn a commission from bookings made through this link.</p>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission from bookings made through this link.</p>
     </aside>
   </main>
 </BaseLayout>

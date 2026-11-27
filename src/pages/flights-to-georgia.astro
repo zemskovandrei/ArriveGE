@@ -3,51 +3,142 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
 import { asset, path } from "../lib/paths";
 const pageImage = asset("images/hero.jpg");
+
+const faq = [
+  {
+    q: "Which airport should I fly into in Georgia?",
+    a: "Tbilisi (TBS) if you plan to see Tbilisi, Kazbegi and Kakheti. Kutaisi (KUT) for cheap low-cost flights, but add about 4 hours to reach Tbilisi. Batumi (BUS) if your trip is mainly the Black Sea coast.",
+  },
+  {
+    q: "How do I get from Kutaisi airport to Tbilisi?",
+    a: "Georgian Bus and OmniBus run buses for about 25 GEL; the trip takes around 4 hours. Trains are cheaper but slower and need a transfer to the station. A taxi costs around 400 GEL.",
+  },
+  {
+    q: "Is it cheaper to fly to Kutaisi or Tbilisi?",
+    a: "Kutaisi often has the cheapest tickets because of low-cost airlines. Add the bus to Tbilisi (time and about 25 GEL) before you decide.",
+  },
+  {
+    q: "Can I fly into one airport and out of another?",
+    a: "Yes, and it often makes sense: for example, arrive in Tbilisi and leave from Batumi or Kutaisi after travelling west. Search open-jaw (multi-city) tickets.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Flights to Georgia — compare tickets | ArriveGE"
-  description="Compare flights to Tbilisi (TBS), Batumi, or Kutaisi before you land. Then book eSIM and airport transfer."
+  title="Flights to Georgia (2026): Tbilisi vs Kutaisi vs Batumi — Which Airport? | ArriveGE"
+  description="Which Georgian airport to fly into: Tbilisi for most trips, Kutaisi for cheap low-cost flights (bus to Tbilisi ~25 GEL, 4 hours), Batumi for the Black Sea. Plus booking tips."
   nextHref="/esim-georgia"
   nextLabel="eSIM for Georgia"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Before takeoff</p>
       <h1>Flights to Georgia</h1>
       <p>
-        Compare tickets to Tbilisi, Batumi, or Kutaisi. After you pick a flight, lock eSIM and a transfer so landing is
-        calm.
+        Georgia has three international airports. Tbilisi is the best choice for most trips. Kutaisi often has the cheapest
+        tickets, but it is about 4 hours from Tbilisi.
       </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Which airport</h2>
+      <h2>Which airport to choose</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Airport</th>
+            <th>Best for</th>
+            <th>To the city</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tbilisi (TBS)</td>
+            <td>Tbilisi, Kazbegi, Kakheti, first-time visitors</td>
+            <td>25–30 min, Bolt 30–40 GEL</td>
+          </tr>
+          <tr>
+            <td>Kutaisi (KUT)</td>
+            <td>Cheap low-cost flights, western Georgia</td>
+            <td>~4 h to Tbilisi by bus, ~25 GEL</td>
+          </tr>
+          <tr>
+            <td>Batumi (BUS)</td>
+            <td>Black Sea beach holidays</td>
+            <td>Short ride to the center</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Tbilisi (TBS)</h2>
+      <p>
+        The main gateway, with the most airlines and connections. It's the easiest base for the capital and the most popular
+        day trips. Many flights land at night, so plan how you'll get into the city:
+        <a href={path("tbilisi-airport-transfer")}>Tbilisi airport to city center</a>.
+      </p>
+
+      <h2>Kutaisi (KUT)</h2>
+      <p>
+        Served mainly by low-cost airlines, so tickets are often the cheapest. The catch is distance: buses to Tbilisi run by
+        Georgian Bus and OmniBus cost about 25 GEL and take around 4 hours. A taxi is around 400 GEL. It's a great choice if
+        you start in western Georgia: Kutaisi, Svaneti or the coast.
+      </p>
+
+      <h2>Batumi (BUS)</h2>
+      <p>
+        Best if your trip is mostly the Black Sea. It's also a smart exit airport after travelling west from Tbilisi. See
+        <a href={path("batumi-hotels")}>where to stay in Batumi</a>.
+      </p>
+
+      <h2>How to find a cheaper ticket</h2>
       <ul>
-        <li><strong>Tbilisi (TBS)</strong> — default for city + Kazbegi + Kakheti.</li>
-        <li><strong>Batumi (BUS)</strong> — Black Sea trip; fewer onward options inland.</li>
-        <li><strong>Kutaisi (KUT)</strong> — often cheaper LCC flights; plan a transfer or train to Tbilisi.</li>
+        <li><strong>Compare all three airports</strong> in one search and include the cost and time of getting to your first night's stay.</li>
+        <li><strong>Try multi-city:</strong> fly into Tbilisi and out of Kutaisi or Batumi so you don't backtrack.</li>
+        <li><strong>Be flexible by a few days;</strong> midweek flights are often cheaper.</li>
+        <li><strong>Check baggage rules</strong> on low-cost flights before comparing prices.</li>
       </ul>
 
       <h2>After you book the ticket</h2>
-      <ul>
-        <li>Install eSIM before boarding.</li>
-        <li>Prebook airport transfer if you land late or with luggage.</li>
-        <li>Hold hotel with free cancellation until dates are firm.</li>
-      </ul>
+      <ol>
+        <li>Get an <a href={path("esim-georgia")}>eSIM for Georgia</a> so you have data on landing.</li>
+        <li>Pre-book a <a href={path("tbilisi-airport-transfer")}>transfer</a> if you land late or travel with family.</li>
+        <li>Book a hotel with free cancellation: <a href={path("tbilisi-hotels")}>Tbilisi</a> or <a href={path("batumi-hotels")}>Batumi</a>.</li>
+        <li>Reserve popular day trips like <a href={path("kazbegi-day-trip")}>Kazbegi</a> and <a href={path("kakheti-wine-tour")}>Kakheti</a>.</li>
+      </ol>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
       <h2>Compare flights</h2>
-      <p>Affiliate search. Prices change — check your dates on the live page.</p>
+      <p>Search Tbilisi, Kutaisi and Batumi for your dates. Prices change daily.</p>
       <a class="btn btn-primary" href={aff("flights")} target="_blank" rel="noopener sponsored noreferrer"
         >Search on Aviasales</a
       >
       <a class="btn btn-ghost" href={path("esim-georgia")}>Next: eSIM</a>
       <a class="btn btn-ghost" href={path("tbilisi-airport-transfer")}>Next: transfer</a>
-      <p class="disclaimer">We may earn a commission if you book through this link.</p>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through this link.</p>
     </aside>
   </main>
 </BaseLayout>

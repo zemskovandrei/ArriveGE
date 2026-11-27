@@ -3,76 +3,163 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { aff } from "../data/affiliates";
 import { asset, path } from "../lib/paths";
 const pageImage = asset("images/hero.jpg");
+
+const faq = [
+  {
+    q: "What is the best area to stay in Tbilisi for first-time visitors?",
+    a: "The Old Town (around Abanotubani and Meidan) or Sololaki. You can walk to the sulfur baths, Narikala fortress, Freedom Square and most restaurants.",
+  },
+  {
+    q: "Is Tbilisi hilly?",
+    a: "Yes. The Old Town, Sololaki and Vera are built on slopes with steep, uneven streets. If you have mobility issues or heavy luggage, check the street on the map and ask about stairs.",
+  },
+  {
+    q: "Which area is quietest at night?",
+    a: "Vake and Vera are calmer than the Old Town, which has bars and music until late, especially at weekends.",
+  },
+  {
+    q: "Do I need a car in Tbilisi?",
+    a: "No. The center is walkable, Bolt rides across town usually cost 5–15 GEL, and the metro covers the main districts. Use tours or drivers for day trips.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Tbilisi hotels by neighborhood | ArriveGE"
-  description="Where to stay in Tbilisi: Old Town for first visits, Vera for cafes, Vake for quieter nights. Book with dates, not vibes."
+  title="Where to Stay in Tbilisi (2026): Best Neighborhoods for Every Traveler | ArriveGE"
+  description="Old Town, Sololaki, Vera, Vake or Saburtalo? A local's guide to where to stay in Tbilisi: who each area suits, noise, hills and how to pick a hotel."
   nextHref="/kazbegi-day-trip"
   nextLabel="Kazbegi day trip"
 >
+  <script type="application/ld+json" set:html={faqSchema} />
+
   <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
     <div class="page-hero-inner" data-reveal>
       <p class="section-kicker">Sleep</p>
-      <h1>Tbilisi hotels</h1>
+      <h1>Where to Stay in Tbilisi</h1>
       <p>
-        Pick a neighborhood for how you move, then filter by dates and cancellation. Skip “best of” lists with fifty
-        logos.
+        First visit: stay in the Old Town or Sololaki and walk everywhere. Want calmer nights and good cafes: Vera. Longer
+        stay or working remotely: Vake.
       </p>
     </div>
   </header>
 
   <main class="section content-grid">
     <article class="prose" data-reveal>
-      <h2>Old Town / Abanotubani</h2>
-      <p>
-        First trip, short stay, walk to sulfur baths and Narikala. Expect hills, tourists, and music at night. Good if
-        you want zero commute to the postcard streets.
-      </p>
-
-      <h2>Vera / Sololaki edge</h2>
-      <p>
-        Cafes, wine bars, flatter walks. Still central, usually calmer nights than the bath district. Strong default for
-        3–5 nights.
-      </p>
-
-      <h2>Vake</h2>
-      <p>
-        Parks, apartments, quieter evenings. You will use Bolt more. Better if you work remotely or travel with kids.
-      </p>
-
+      <h2>Neighborhoods at a glance</h2>
       <table class="compare">
         <thead>
           <tr>
-            <th>Priority</th>
-            <th>Start here</th>
+            <th>Area</th>
+            <th>Best for</th>
+            <th>Night noise</th>
+            <th>Walk to Old Town</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Walk everywhere for 2 days</td>
-            <td>Old Town</td>
+            <td>Old Town / Abanotubani</td>
+            <td>First visit, 2–3 nights</td>
+            <td>Loud at weekends</td>
+            <td>You're in it</td>
           </tr>
           <tr>
-            <td>Food + wine at night</td>
+            <td>Sololaki</td>
+            <td>Character, old houses, couples</td>
+            <td>Medium</td>
+            <td>5–10 min</td>
+          </tr>
+          <tr>
             <td>Vera</td>
+            <td>Cafes, wine bars, 3–7 nights</td>
+            <td>Calm</td>
+            <td>20–30 min</td>
           </tr>
           <tr>
-            <td>Sleep + laptop</td>
             <td>Vake</td>
+            <td>Families, remote work, parks</td>
+            <td>Quiet</td>
+            <td>Bolt, ~15 min</td>
+          </tr>
+          <tr>
+            <td>Marjanishvili / Chugureti</td>
+            <td>Budget, Fabrika nightlife</td>
+            <td>Medium</td>
+            <td>Metro or 30 min walk</td>
           </tr>
         </tbody>
       </table>
+
+      <h2>Old Town / Abanotubani</h2>
+      <p>
+        Brick domes of the sulfur baths, Narikala fortress above and the most famous streets of Tbilisi. Everything is a short
+        walk. The trade-off: crowds, steep cobbled lanes and music late at night. Ideal for a short first visit.
+      </p>
+
+      <h2>Sololaki</h2>
+      <p>
+        Old townhouses with carved balconies and painted entrance halls, just above Freedom Square. Central but a bit calmer
+        than the Old Town. Many guesthouses are in old buildings: check for an elevator if you have heavy bags.
+      </p>
+
+      <h2>Vera</h2>
+      <p>
+        Leafy streets, coffee shops, natural wine bars and good restaurants. Flatter than the Old Town in parts and quiet at
+        night, while Rustaveli Avenue is within walking distance. A strong default for 3–7 nights.
+      </p>
+
+      <h2>Vake</h2>
+      <p>
+        Tbilisi's upscale residential area, with Vake Park, modern apartments and supermarkets. You will use Bolt more, but
+        rides are cheap. Good for families, longer stays and anyone working remotely.
+      </p>
+
+      <h2>Marjanishvili / Chugureti</h2>
+      <p>
+        Across the river, around Aghmashenebeli Avenue and the Fabrika hostel-and-bars complex. Often cheaper, with a younger
+        crowd and a metro station. Good for budget travelers who don't mind a short commute.
+      </p>
+
+      <h2>How to pick the right hotel</h2>
+      <ul>
+        <li><strong>Check the slope.</strong> Look at the street in Google Street View; some "5 minutes from the center" places are up steep hills.</li>
+        <li><strong>Ask about elevators and stairs</strong> in older buildings.</li>
+        <li><strong>Read recent reviews for noise</strong> if you are in the Old Town or near bars.</li>
+        <li><strong>Prefer free cancellation</strong> until your dates are fixed.</li>
+        <li>
+          <strong>Landing at night?</strong> Ask about late check-in and see
+          <a href={path("tbilisi-airport-transfer")}>how to get from the airport</a>.
+        </li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
     </article>
 
     <aside class="action-panel" data-reveal>
       <h2>Search stays</h2>
-      <p>Opens Tbilisi hotel search. Set your dates. Affiliate link.</p>
+      <p>Pick your area, then set dates and filter by free cancellation.</p>
       <a class="btn btn-primary" href={aff("hotelsTbilisi")} target="_blank" rel="noopener sponsored noreferrer"
         >Browse Tbilisi hotels</a
       >
       <a class="btn btn-ghost" href={path("batumi-hotels")}>Going to Batumi?</a>
-      <p class="disclaimer">We may earn a commission from bookings made through these links.</p>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission from bookings made through these links.</p>
     </aside>
   </main>
 </BaseLayout>
