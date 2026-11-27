@@ -1,20 +1,48 @@
 ---
-import { path } from "../lib/paths";
+import { hasRu, localePath, type Lang } from "../lib/i18n";
 
-const links = [
-  { href: path("flights-to-georgia"), label: "Flights" },
-  { href: path("esim-georgia"), label: "eSIM" },
-  { href: path("tbilisi-airport-transfer"), label: "Transfer" },
-  { href: path("tbilisi-hotels"), label: "Tbilisi" },
-  { href: path("batumi-hotels"), label: "Batumi" },
-  { href: path("kazbegi-day-trip"), label: "Kazbegi" },
-  { href: path("kakheti-wine-tour"), label: "Kakheti" },
-];
+interface Props {
+  lang?: Lang;
+  slug?: string;
+}
+
+const { lang = "en", slug = "" } = Astro.props;
+
+const labels = {
+  en: {
+    "flights-to-georgia": "Flights",
+    "esim-georgia": "eSIM",
+    "tbilisi-airport-transfer": "Transfer",
+    "tbilisi-hotels": "Tbilisi",
+    "batumi-hotels": "Batumi",
+    "kazbegi-day-trip": "Kazbegi",
+    "kakheti-wine-tour": "Kakheti",
+  },
+  ru: {
+    "flights-to-georgia": "Авиабилеты",
+    "esim-georgia": "eSIM",
+    "tbilisi-airport-transfer": "Трансфер",
+    "tbilisi-hotels": "Тбилиси",
+    "batumi-hotels": "Батуми",
+    "kazbegi-day-trip": "Казбеги",
+    "kakheti-wine-tour": "Кахетия",
+  },
+} as const;
+
+const links = Object.entries(labels[lang]).map(([to, label]) => ({ href: localePath(lang, to), label }));
+
+// Language switcher: link to the same page in the other language, or its home page if not translated.
+const other: Lang = lang === "ru" ? "en" : "ru";
+const switchHref = hasRu(slug) ? localePath(other, slug) : localePath(other);
+const switchLabel = other === "ru" ? "RU" : "EN";
+const switchTitle = other === "ru" ? "Русская версия" : "English version";
 ---
 
-<nav class="site-nav" aria-label="Primary">
-  <a class="brand" href={path()}>Arrive<span>GE</span></a>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+<nav class="site-nav" aria-label={lang === "ru" ? "Основное меню" : "Primary"}>
+  <a class="brand" href={localePath(lang)}>Arrive<span>GE</span></a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+    >{lang === "ru" ? "Меню" : "Menu"}</button
+  >
   <ul class="nav-links" id="nav-menu">
     {
       links.map((link) => (
@@ -23,5 +51,8 @@ const links = [
         </li>
       ))
     }
+    <li>
+      <a class="lang-switch" href={switchHref} hreflang={other} lang={other} title={switchTitle}>{switchLabel}</a>
+    </li>
   </ul>
 </nav>

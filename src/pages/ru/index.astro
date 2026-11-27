@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { asset, path } from "../../lib/paths";
+const heroImage = asset("images/hero.jpg");
+
+const needs = [
+  {
+    num: "01",
+    href: path("ru/flights-to-georgia"),
+    title: "Авиабилеты в Грузию",
+    text: "Тбилиси, Кутаиси или Батуми: куда выгоднее лететь и как добраться дальше.",
+  },
+  {
+    num: "02",
+    href: path("ru/esim-georgia"),
+    title: "Интернет сразу после посадки",
+    text: "eSIM дома или местная симка Magti. Что ловит в горах.",
+  },
+  {
+    num: "03",
+    href: path("ru/tbilisi-airport-transfer"),
+    title: "Из аэропорта Тбилиси в город",
+    text: "Автобус 337 за 1 лари, Bolt или водитель с табличкой.",
+  },
+  {
+    num: "04",
+    href: path("ru/tbilisi-hotels"),
+    title: "Где жить в Тбилиси",
+    text: "Старый город, Сололаки, Вера или Ваке: шум, холмы и бюджет.",
+  },
+  {
+    num: "05",
+    href: path("ru/batumi-hotels"),
+    title: "Где жить в Батуми",
+    text: "У моря, в Старом городе или в новых высотках на юге.",
+  },
+  {
+    num: "06",
+    href: path("ru/kazbegi-day-trip"),
+    title: "Казбеги за один день",
+    text: "Экскурсия, водитель или маршрутка. Гергети и перевал Джвари.",
+  },
+  {
+    num: "+",
+    href: path("ru/kakheti-wine-tour"),
+    title: "Винная Кахетия",
+    text: "Сигнахи, винодельни и квеври. Тур или своя машина.",
+  },
+];
+
+const faq = [
+  {
+    q: "Нужна ли виза в Грузию?",
+    a: "Гражданам России, Беларуси, Украины, Казахстана и многих других стран виза не нужна: можно находиться в Грузии до года. Перед поездкой всё равно проверьте актуальные правила для своего паспорта.",
+  },
+  {
+    q: "Работают ли в Грузии российские банковские карты?",
+    a: "Нет. Карты российских банков (Visa, Mastercard и «Мир») в Грузии не принимают. Везите наличные доллары или евро либо карту банка другой страны.",
+  },
+  {
+    q: "Говорят ли в Грузии по-русски?",
+    a: "Во многих местах да, особенно люди среднего и старшего возраста, таксисты и владельцы гостевых домов. Молодёжь чаще говорит по-английски.",
+  },
+  {
+    q: "Что забронировать до прилёта?",
+    a: "Билеты, интернет (eSIM), трансфер из аэропорта, если прилетаете ночью, жильё с бесплатной отменой и популярные экскурсии в Казбеги и Кахетию в высокий сезон.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<BaseLayout
+  title="ArriveGE — путеводитель по Грузии: что подготовить до прилёта"
+  description="Чек-лист для поездки в Грузию: авиабилеты, eSIM, трансфер из аэропорта Тбилиси, отели в Тбилиси и Батуми, поездки в Казбеги и Кахетию. Цены и советы на 2026 год."
+  homeNote
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <header class="hero has-photo" style={`--hero-image: url('${heroImage}')`}>
+    <div class="hero-inner">
+      <h1 class="brand-hero" data-reveal>Arrive<span>GE</span></h1>
+      <p class="hero-lead" data-reveal data-reveal-delay="100">
+        Грузия начинается с трапа. Интернет, такси, жильё и первая поездка в горы — всё решено ещё до посадки.
+      </p>
+      <div class="cta-row" data-reveal data-reveal-delay="180">
+        <a class="btn btn-primary" href={path("ru/flights-to-georgia")}>Найти билеты</a>
+        <a class="btn btn-ghost" href={path("ru/esim-georgia")}>Интернет в Грузии</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="needs">
+      <p class="section-kicker" data-reveal>До вылета</p>
+      <h2 data-reveal>Что подготовить до прилёта в Грузию</h2>
+      <p class="section-lead" data-reveal>Короткий чек-лист. Откройте то, что ещё не решили.</p>
+
+      <div class="need-list">
+        {
+          needs.map((item) => (
+            <a class="need-item" href={item.href} data-reveal>
+              <span class="need-num">{item.num}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+              <span class="need-go">Открыть →</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section prose" id="faq">
+      <p class="section-kicker" data-reveal>Частые вопросы</p>
+      <h2 data-reveal>Перед поездкой в Грузию</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+    </section>
+  </main>
+</BaseLayout>

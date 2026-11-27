@@ -546,3 +546,22 @@ a:hover {
     padding-left: 0;
   }
 }
+
+.nav-links a.lang-switch {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Long words (Russian especially) must not push tables past the screen on phones. */
+.content-grid > * {
+  min-width: 0;
+}
+
+.compare th,
+.compare td {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
