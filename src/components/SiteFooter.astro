@@ -1,14 +1,34 @@
 ---
 import { path } from "../lib/paths";
+import { localePath, type Lang } from "../lib/i18n";
 
 interface Props {
   nextHref?: string;
   nextLabel?: string;
   homeNote?: boolean;
+  lang?: Lang;
 }
 
-const { nextHref, nextLabel, homeNote = false } = Astro.props;
+const { nextHref, nextLabel, homeNote = false, lang = "en" } = Astro.props;
 const nextUrl = nextHref ? path(nextHref) : undefined;
+const home = localePath(lang);
+
+const t =
+  lang === "ru"
+    ? {
+        note: "Независимый чек-лист для поездки в Грузию. Часть ссылок партнёрские: если вы бронируете через них, мы можем получить комиссию. Для вас цена не меняется.",
+        lang: "По-русски · для путешественников из любых стран",
+        next: "Дальше:",
+        back: "Назад к",
+        backLink: "чек-листу",
+      }
+    : {
+        note: "Independent trip checklist for Georgia. Some links are affiliate links — if you book through them, we may earn a commission at no extra cost to you.",
+        lang: "English · works for any traveler",
+        next: "Next:",
+        back: "Back to",
+        backLink: "checklist",
+      };
 ---
 
 <footer class="site-footer">
@@ -17,13 +37,10 @@ const nextUrl = nextHref ? path(nextHref) : undefined;
       homeNote ? (
         <div>
           <strong class="brand">Arrive<span>GE</span></strong>
-          <p>
-            Independent trip checklist for Georgia. Some links are affiliate links — if you book through them, we may
-            earn a commission at no extra cost to you.
-          </p>
+          <p>{t.note}</p>
         </div>
       ) : (
-        <a class="brand" href={path()}>
+        <a class="brand" href={home}>
           Arrive<span>GE</span>
         </a>
       )
@@ -31,13 +48,13 @@ const nextUrl = nextHref ? path(nextHref) : undefined;
     {
       nextUrl && nextLabel ? (
         <p>
-          Next: <a href={nextUrl}>{nextLabel}</a>
+          {t.next} <a href={nextUrl}>{nextLabel}</a>
         </p>
       ) : homeNote ? (
-        <p>English · works for any traveler</p>
+        <p>{t.lang}</p>
       ) : (
         <p>
-          Back to <a href={path()}>checklist</a>
+          {t.back} <a href={home}>{t.backLink}</a>
         </p>
       )
     }
