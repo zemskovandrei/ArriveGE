@@ -1,0 +1,177 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/page-mountains.jpg");
+
+const faq = [
+  {
+    q: "How far is Mtskheta from Tbilisi?",
+    a: "About 20 km north of the city. By car or Bolt it takes 20–30 minutes; the marshrutka from Didube takes about 25–35 minutes.",
+  },
+  {
+    q: "How do I get to Mtskheta by public transport?",
+    a: "Take the metro to Didube, then a marshrutka (minivan) to Mtskheta from the Didube bus station. It leaves every 20–30 minutes from the morning, costs about 2 GEL and stops in the town center near Svetitskhoveli.",
+  },
+  {
+    q: "How do I get to Jvari Monastery?",
+    a: "Jvari is on a hilltop across the river from Mtskheta and there is no minivan up. Take a taxi from Mtskheta (about 10 minutes, roughly 15–30 GEL return with waiting time), stop there on the way in a Bolt from Tbilisi, or join a tour.",
+  },
+  {
+    q: "Is there an entry fee for Svetitskhoveli and Jvari?",
+    a: "No. Svetitskhoveli Cathedral, Jvari Monastery and Samtavro Convent are working churches with free entry. Donations are welcome.",
+  },
+  {
+    q: "What should I wear?",
+    a: "Women cover hair and shoulders and wear a skirt (wrap skirts and scarves are often available at the entrance). Men wear long trousers. No shorts.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<BaseLayout
+  title="Mtskheta & Jvari Day Trip from Tbilisi (2026): Minivan, Taxi or Tour | ArriveGE"
+  description="How to visit Mtskheta, Svetitskhoveli and Jvari Monastery from Tbilisi in half a day: 2 GEL minivan from Didube, Bolt, or a short tour. Prices, dress code and combo trips."
+  nextHref="/kazbegi-day-trip"
+  nextLabel="Kazbegi day trip"
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Half-day trip</p>
+      <h1>Mtskheta &amp; Jvari from Tbilisi</h1>
+      <p>
+        Georgia's ancient capital and a UNESCO site, just 20 km from Tbilisi. Half a day is enough, it is open all year and
+        it costs almost nothing on your own.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Cheapest:</strong> marshrutka from Didube, about 2 GEL, 25–35 minutes.</li>
+        <li><strong>Easiest on your own:</strong> Bolt from central Tbilisi, stopping at Jvari on the way.</li>
+        <li><strong>No planning:</strong> a half-day group tour, or Mtskheta added to a Kazbegi or Gori tour.</li>
+        <li><strong>Time needed:</strong> 3–5 hours including the trip.</li>
+        <li><strong>Entry:</strong> free for all three main churches.</li>
+      </ul>
+      <p><em>Prices last checked: November 2026.</em></p>
+
+      <h2>Ways to get there compared</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Price</th>
+            <th>Includes Jvari?</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Marshrutka from Didube</td>
+            <td>~2 GEL, cash</td>
+            <td>No, taxi needed</td>
+            <td>Budget travelers</td>
+          </tr>
+          <tr>
+            <td>Bolt / taxi</td>
+            <td>~25–40 GEL each way</td>
+            <td>Yes, if you ask</td>
+            <td>Couples and small groups</td>
+          </tr>
+          <tr>
+            <td>Half-day group tour</td>
+            <td>from ~$20–30 per person</td>
+            <td>Yes</td>
+            <td>Solo travelers, guided history</td>
+          </tr>
+          <tr>
+            <td>Combo tour (with Ananuri/Kazbegi or Gori/Uplistsikhe)</td>
+            <td>from ~$45 per person</td>
+            <td>Usually</td>
+            <td>Seeing more in one day</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>What to see</h2>
+      <ol>
+        <li>
+          <strong>Jvari Monastery</strong> — a 6th-century church on a hill above the meeting of the Aragvi and Mtkvari
+          rivers. The view down to Mtskheta is the classic photo. Go first, before the tour buses.
+        </li>
+        <li>
+          <strong>Svetitskhoveli Cathedral</strong> — the 11th-century cathedral in the town center, one of the most
+          important churches in Georgia. Allow 30–40 minutes.
+        </li>
+        <li><strong>Samtavro Convent</strong> — a few minutes' walk away, calm and less crowded.</li>
+        <li>
+          <strong>The old streets around the cathedral</strong> — souvenir stalls, churchkhela and cafes with river views
+          for lunch.
+        </li>
+      </ol>
+
+      <h2>Do it yourself: step by step</h2>
+      <ol>
+        <li>Take the metro to <strong>Didube</strong> station (a short ride from the center).</li>
+        <li>Find the Mtskheta marshrutka in the bus station area; minivans run every 20–30 minutes from the morning.</li>
+        <li>Pay the driver or the ticket desk in cash and get off in the town center near Svetitskhoveli.</li>
+        <li>For Jvari, take a taxi from the center or call a Bolt; ask the driver to wait 30–45 minutes.</li>
+        <li>Return the same way. Avoid the last minivans after dark — take Bolt instead.</li>
+      </ol>
+
+      <h2>Combine it with more</h2>
+      <p>
+        Mtskheta is on the road north, so many <a href={path("kazbegi-day-trip")}>Kazbegi day tours</a> stop at Jvari on
+        the way. It also pairs with Gori and the cave town of Uplistsikhe to the west. In winter, when the mountain road is
+        sometimes closed, Mtskheta is the easiest day out from Tbilisi.
+      </p>
+
+      <h2>Tips</h2>
+      <ul>
+        <li><strong>Dress for churches:</strong> covered shoulders and knees, scarf for women.</li>
+        <li><strong>Bring small notes</strong> for the minivan, taxi and stalls.</li>
+        <li><strong>Mid-October is festival time</strong> (Svetitskhovloba, 14 October): beautiful, but busy.</li>
+        <li>
+          <strong>Make it part of a longer plan</strong> — see <a href={path("tbilisi-3-day-itinerary")}>Tbilisi in 3
+          days</a>.
+        </li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Go without planning</h2>
+      <p>Half-day Mtskheta &amp; Jvari tours and combo trips with hotel pickup in Tbilisi.</p>
+      <a class="btn btn-primary" href={aff("tours")} target="_blank" rel="noopener sponsored noreferrer"
+        >See Mtskheta tours</a
+      >
+      <a class="btn btn-ghost" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
+        >Private driver</a
+      >
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>

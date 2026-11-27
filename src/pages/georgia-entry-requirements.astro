@@ -1,0 +1,198 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/hero.jpg");
+
+const faq = [
+  {
+    q: "Do I need a visa for Georgia?",
+    a: "Most travelers don't. Citizens of the EU, UK, US, Canada, Australia, Japan and many other countries can stay visa-free for up to one year. Others may get a visa-free stay if they hold a valid visa or residence permit of certain countries, or can apply for an e-visa at evisa.gov.ge.",
+  },
+  {
+    q: "Is travel insurance mandatory for Georgia in 2026?",
+    a: "Yes. Since 1 January 2026 foreign visitors must have health and accident insurance for their whole stay with cover of at least 30,000 GEL (about $11,500). Visa-free travelers are not exempt. The policy can be from any Georgian or foreign insurer and in English, on paper or on your phone.",
+  },
+  {
+    q: "Will they actually check my insurance?",
+    a: "Border officers may ask for it at air, land and sea crossings. Checks are not done on every passenger, but airlines may also ask at check-in. Keep the policy ready on your phone and as a PDF offline.",
+  },
+  {
+    q: "How long must my passport be valid?",
+    a: "For most nationalities the passport must be valid for your whole stay. Citizens of some countries need a passport valid for at least a year on arrival. Check the official consular site (geoconsul.gov.ge) for your nationality.",
+  },
+  {
+    q: "Can I enter Georgia with an EU ID card?",
+    a: "Citizens of some countries, including many EU member states, can enter with a national ID card instead of a passport. Your airline may still ask for a passport if you transit another country.",
+  },
+  {
+    q: "Can I travel to Abkhazia or South Ossetia?",
+    a: "Georgia treats these regions as occupied territories. Entering them from Russia is illegal under Georgian law and can lead to a fine or criminal case, and many governments advise against all travel there.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<BaseLayout
+  title="Georgia Visa & Entry Requirements 2026: Visa-Free Stay, Mandatory Insurance | ArriveGE"
+  description="Do you need a visa for Georgia? Who gets 1 year visa-free, the new mandatory travel insurance rule (30,000 GEL cover since 2026), passport validity, e-visa and border tips."
+  nextHref="/money-in-georgia"
+  nextLabel="money and currency"
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Before you fly</p>
+      <h1>Georgia Visa &amp; Entry Requirements</h1>
+      <p>
+        Most visitors need no visa and can stay up to a year. What changed in 2026: every foreign visitor must have travel
+        health insurance for the whole trip.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Visa:</strong> not needed for EU, UK, US, Canada, Australia, Japan and many more — up to 1 year visa-free.</li>
+        <li><strong>Insurance:</strong> mandatory since 1 January 2026, minimum 30,000 GEL cover for medical care and accidents.</li>
+        <li><strong>Passport:</strong> valid for your whole stay (some nationalities need 1 year left).</li>
+        <li><strong>No visa-free deal for you?</strong> Check whether your US, UK, EU or other visa qualifies you, or apply for an e-visa.</li>
+        <li><strong>Always confirm</strong> on the official consular site for your passport before you book.</li>
+      </ul>
+      <p><em>Rules last checked: November 2026.</em></p>
+
+      <h2>Who can enter visa-free</h2>
+      <p>
+        Georgia has one of the most open visa policies in the region. Citizens of roughly 95 countries — including all EU
+        states, the UK, the US, Canada, Australia, New Zealand, Japan, South Korea, Israel, the Gulf states and most of
+        Latin America — can stay without a visa for up to one year. Some countries get shorter visa-free periods.
+      </p>
+      <p>
+        If your passport is not on the visa-free list, you may still enter visa-free for a limited time if you hold a valid
+        visa or residence permit from certain countries (for example the US, the UK or a Schengen state). Rules differ by
+        nationality, so check the official list before you buy tickets.
+      </p>
+
+      <h2>Mandatory travel insurance (new in 2026)</h2>
+      <p>Since 1 January 2026 every foreign visitor needs an insurance policy that:</p>
+      <ul>
+        <li>covers medical treatment, hospital stays and accidents;</li>
+        <li>has a limit of at least <strong>30,000 GEL</strong> (about $11,500 or €10,500);</li>
+        <li>is valid for the whole stay, including the days you arrive and leave;</li>
+        <li>names Georgia as a covered country;</li>
+        <li>is written in English or Georgian, on paper or electronic.</li>
+      </ul>
+      <p>
+        Any insurer is accepted, Georgian or foreign. A normal international travel policy usually qualifies if Georgia is
+        included and the medical limit is high enough — check the PDF before you fly. Diplomats, holders of service
+        passports and professional drivers are among the few exemptions; children are not exempt.
+      </p>
+      <p>
+        Checks are random rather than universal, but you can be asked at the border and airlines sometimes check at
+        check-in. Buying a policy at home is usually cheaper than at the border.
+      </p>
+
+      <h2>E-visa</h2>
+      <p>
+        Travelers who do need a visa can apply online at <strong>evisa.gov.ge</strong>. Apply at least a week before you
+        travel; decisions usually come within a few working days. The e-visa allows a shorter stay than visa-free entry.
+      </p>
+
+      <h2>What to have ready at the border</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Needed?</th>
+            <th>Tip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Passport (or eligible ID card)</td>
+            <td>Always</td>
+            <td>Valid for the whole stay</td>
+          </tr>
+          <tr>
+            <td>Travel insurance</td>
+            <td>Yes, since 2026</td>
+            <td>Save the PDF offline on your phone</td>
+          </tr>
+          <tr>
+            <td>Return or onward ticket</td>
+            <td>Sometimes asked</td>
+            <td>Keep the booking handy</td>
+          </tr>
+          <tr>
+            <td>Hotel booking</td>
+            <td>Sometimes asked</td>
+            <td>First night is enough</td>
+          </tr>
+          <tr>
+            <td>Visa or e-visa</td>
+            <td>Only if not visa-free</td>
+            <td>Print a copy</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Border tips</h2>
+      <ul>
+        <li>
+          <strong>Have internet on landing</strong> so you can open your insurance and bookings — see
+          <a href={path("esim-georgia")}>eSIM for Georgia</a>.
+        </li>
+        <li>
+          <strong>Arriving at night?</strong> Book your ride in advance — see
+          <a href={path("tbilisi-airport-transfer")}>Tbilisi airport transfer</a>.
+        </li>
+        <li><strong>Customs:</strong> you can bring personal items, and limited alcohol and tobacco duty-free.</li>
+        <li><strong>Overland from Russia:</strong> only the Upper Lars crossing (towards Kazbegi) is legal; never enter via Abkhazia or South Ossetia.</li>
+        <li><strong>Overstaying</strong> leads to fines and can lead to a ban, so track your days if you stay long.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+      <p>
+        <em
+          >This page is a summary, not legal advice. Rules can change at short notice: check the Georgian Ministry of Foreign
+          Affairs consular site (geoconsul.gov.ge) for your passport before travel.</em
+        >
+      </p>
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Sorted the papers?</h2>
+      <p>Next, make sure you land with data and a ride to the city.</p>
+      <a class="btn btn-primary" href={aff("esim")} target="_blank" rel="noopener sponsored noreferrer"
+        >Get a Georgia eSIM</a
+      >
+      <a class="btn btn-ghost" href={aff("transfer")} target="_blank" rel="noopener sponsored noreferrer"
+        >Book airport transfer</a
+      >
+      <a class="btn btn-ghost" href={aff("flights")} target="_blank" rel="noopener sponsored noreferrer"
+        >Compare flights</a
+      >
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>

@@ -1,0 +1,204 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/hero.jpg");
+
+const faq = [
+  {
+    q: "Are 3 days enough for Tbilisi?",
+    a: "Yes for the city itself: two days cover the Old Town, Narikala, the sulfur baths, Rustaveli Avenue and the Dry Bridge market. The third day is best used for a day trip to Mtskheta, Kazbegi or Kakheti.",
+  },
+  {
+    q: "How much money do I need per day in Tbilisi?",
+    a: "Roughly 100–150 GEL (about $40–60) per person per day for a mid-range trip without the hotel: meals in local restaurants, Bolt rides, the cable car, a bath visit split between two people and museum tickets. A group day tour adds about $40–60.",
+  },
+  {
+    q: "What is the best way to get around Tbilisi?",
+    a: "Walk in the Old Town and Sololaki, and use Bolt or the metro for longer hops. Bolt rides across the center usually cost 5–15 GEL. Metro and buses are cheap and paid by bank card or a Metromoney card.",
+  },
+  {
+    q: "Should I book the sulfur baths in advance?",
+    a: "For a private room on a Friday or Saturday evening, yes: book or call a few hours ahead. On weekday mornings you can usually walk in. Prices for a private room start at around 60–100 GEL per hour and go up for bigger or newer rooms.",
+  },
+  {
+    q: "What is the best day trip from Tbilisi with only one spare day?",
+    a: "Kazbegi if the weather is clear and you like mountains, Kakheti for wine, and Mtskheta if you only have half a day or the mountain road is closed in winter.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<BaseLayout
+  title="Tbilisi in 3 Days (2026): A Simple Itinerary with Prices and Day Trip | ArriveGE"
+  description="A realistic 3-day Tbilisi itinerary: Old Town, Narikala cable car, sulfur baths, Rustaveli, Fabrika and the best day trip for day three. Costs, transport and where to stay."
+  nextHref="/mtskheta-day-trip"
+  nextLabel="Mtskheta half-day trip"
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Itinerary</p>
+      <h1>Tbilisi in 3 Days</h1>
+      <p>
+        Two days for the city on foot, one day out of town. This plan keeps walking uphill to a minimum and puts the
+        busiest sights early in the morning.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Day 1:</strong> Old Town, Narikala fortress by cable car, the sulfur baths in the evening.</li>
+        <li><strong>Day 2:</strong> Rustaveli Avenue, Dry Bridge market, Mtatsminda or Fabrika at night.</li>
+        <li><strong>Day 3:</strong> a day trip: Kazbegi (mountains), Kakheti (wine) or Mtskheta (half day).</li>
+        <li><strong>Budget:</strong> about 100–150 GEL per person per day plus hotel. 1 USD ≈ 2.6 GEL.</li>
+        <li><strong>Where to stay:</strong> Old Town or Sololaki, so day 1 and day 2 start at your door.</li>
+      </ul>
+      <p><em>Prices last checked: November 2026.</em></p>
+
+      <h2>Before day 1: arrival</h2>
+      <p>
+        Most flights land at Tbilisi Airport late at night or early in the morning. Pre-book a ride so you are not haggling
+        at 4 am — see <a href={path("tbilisi-airport-transfer")}>airport transfer options</a> — and install an
+        <a href={path("esim-georgia")}>eSIM</a> before you fly so Bolt and maps work at the gate.
+      </p>
+
+      <h2>Day 1: Old Town, Narikala and the baths</h2>
+      <ol>
+        <li>
+          <strong>Morning — Metekhi and Rike Park.</strong> Start at Metekhi church above the river, cross the Peace Bridge
+          and walk through Rike Park.
+        </li>
+        <li>
+          <strong>Cable car to Narikala.</strong> The cable car runs from Rike Park up to the fortress in a couple of minutes
+          and costs a few lari, paid by card. See the Mother of Georgia statue and the view over the domes of Abanotubani.
+        </li>
+        <li>
+          <strong>Walk down through the botanical garden or the old lanes</strong> to the waterfall behind the bath
+          district.
+        </li>
+        <li>
+          <strong>Lunch:</strong> khinkali and khachapuri near Meidan square. A full meal for one is usually 30–50 GEL.
+        </li>
+        <li>
+          <strong>Afternoon — Sioni cathedral, Anchiskhati basilica and the leaning clock tower</strong> on Shavteli
+          Street, the most photographed corner of the Old Town.
+        </li>
+        <li>
+          <strong>Evening — sulfur baths.</strong> Book a private room for an hour. Public sections are cheaper; private
+          rooms start around 60–100 GEL per hour. Add a scrub (kisi) for an extra fee.
+        </li>
+      </ol>
+
+      <h2>Day 2: Rustaveli, markets and the modern city</h2>
+      <ol>
+        <li>
+          <strong>Morning — Dry Bridge flea market.</strong> Soviet badges, old cameras, paintings. Best before noon,
+          biggest at weekends.
+        </li>
+        <li>
+          <strong>Rustaveli Avenue.</strong> Walk from Freedom Square past the Opera, Parliament and Kashveti church. The
+          Georgian National Museum is here if the weather turns.
+        </li>
+        <li>
+          <strong>Lunch in Sololaki or Vera,</strong> the calmer streets with good cafes and wine bars.
+        </li>
+        <li>
+          <strong>Afternoon — Mtatsminda.</strong> The funicular goes up to the park and restaurant at the top of the
+          city. Go before sunset for the best view.
+        </li>
+        <li>
+          <strong>Night — Fabrika</strong> (a former sewing factory turned courtyard of bars) or a Georgian wine bar in
+          Sololaki.
+        </li>
+      </ol>
+
+      <h2>Day 3: pick one day trip</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Trip</th>
+            <th>Time</th>
+            <th>Typical price</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href={path("kazbegi-day-trip")}>Kazbegi &amp; Gergeti</a></td>
+            <td>10–12 h</td>
+            <td>from ~$45 group tour</td>
+            <td>Mountains, clear-weather days</td>
+          </tr>
+          <tr>
+            <td><a href={path("kakheti-wine-tour")}>Kakheti wine region</a></td>
+            <td>9–11 h</td>
+            <td>from ~$40–60 group tour</td>
+            <td>Wine, food, Sighnaghi</td>
+          </tr>
+          <tr>
+            <td><a href={path("mtskheta-day-trip")}>Mtskheta &amp; Jvari</a></td>
+            <td>3–5 h</td>
+            <td>2 GEL by minivan, or a short tour</td>
+            <td>Half a day, history, winter</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Short on energy? Do Mtskheta in the morning and spend the afternoon in the city. In winter, check the Kazbegi road
+        before you book: the Jvari Pass sometimes closes after snow.
+      </p>
+
+      <h2>Practical tips</h2>
+      <ul>
+        <li><strong>Wear good shoes.</strong> The Old Town has steep cobbled streets and stairs.</li>
+        <li>
+          <strong>Carry some cash</strong> for markets and small cafes. Cards work almost everywhere else — see
+          <a href={path("money-in-georgia")}>money and exchange in Georgia</a>.
+        </li>
+        <li><strong>Churches:</strong> women cover hair and shoulders, men wear long trousers. Scarves are often provided.</li>
+        <li><strong>Use Bolt rather than street taxis</strong> to avoid haggling.</li>
+        <li>
+          <strong>Check entry rules</strong> before you fly — Georgia now asks for travel insurance. See
+          <a href={path("georgia-entry-requirements")}>Georgia visa and entry requirements</a>.
+        </li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Book the 3 days</h2>
+      <p>A central hotel makes days 1 and 2 walkable. Book the day 3 tour early in summer.</p>
+      <a class="btn btn-primary" href={aff("hotelsTbilisi")} target="_blank" rel="noopener sponsored noreferrer"
+        >Tbilisi hotels</a
+      >
+      <a class="btn btn-ghost" href={aff("tours")} target="_blank" rel="noopener sponsored noreferrer"
+        >Day tours from Tbilisi</a
+      >
+      <a class="btn btn-ghost" href={path("tbilisi-hotels")}>Which area to stay in</a>
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>

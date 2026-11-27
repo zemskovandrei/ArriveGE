@@ -1,0 +1,181 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aff } from "../data/affiliates";
+import { asset, path } from "../lib/paths";
+const pageImage = asset("images/page-sea.jpg");
+
+const faq = [
+  {
+    q: "Is Batumi worth visiting in winter?",
+    a: "Yes, if you want a quiet, cheap seaside city break rather than a beach holiday. Hotels cost much less than in summer, the boulevard is empty, and the mountains with ski slopes are a few hours away. Expect rain, though.",
+  },
+  {
+    q: "What is the weather like in Batumi in winter?",
+    a: "Mild and wet. Daytime temperatures are usually around 8–12°C from December to February, it rarely freezes, and snow in the city is uncommon and short-lived. It is one of the rainiest places in the region, so plan indoor options.",
+  },
+  {
+    q: "Can you swim in Batumi in winter?",
+    a: "Not really. The sea is around 10–13°C in winter. The swimming season runs from about late May to early October.",
+  },
+  {
+    q: "Is there skiing near Batumi?",
+    a: "Yes. Goderdzi ski resort is about 100 km from Batumi in the Adjara mountains, roughly 2.5–3 hours by car. The season usually runs from December to March, depending on snow.",
+  },
+  {
+    q: "How do I get to Batumi in winter?",
+    a: "Fly directly to Batumi (fewer flights than in summer), fly to Kutaisi or Tbilisi and take the train or a minivan, or drive. The Tbilisi–Batumi train takes about 5–6 hours.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<BaseLayout
+  title="Batumi in Winter (2026): Weather, What to Do, Prices and Is It Worth It | ArriveGE"
+  description="Visiting Batumi from December to February: mild rainy weather, cheap seafront hotels, things to do indoors and out, Goderdzi skiing, getting there and where to stay."
+  nextHref="/batumi-hotels"
+  nextLabel="where to stay in Batumi"
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <header class="page-hero has-photo" style={`--page-image: url('${pageImage}')`}>
+    <div class="page-hero-inner" data-reveal>
+      <p class="section-kicker">Seaside, off season</p>
+      <h1>Batumi in Winter</h1>
+      <p>
+        No beach crowds, half-price hotels and a seafront you have to yourself. Bring an umbrella: winter in Batumi is mild
+        but wet.
+      </p>
+    </div>
+  </header>
+
+  <main class="section content-grid">
+    <article class="prose" data-reveal>
+      <h2>Quick answer</h2>
+      <ul>
+        <li><strong>Weather:</strong> about 8–12°C by day, rarely below zero, lots of rain.</li>
+        <li><strong>Prices:</strong> seafront hotels are often 40–60% cheaper than in July–August.</li>
+        <li><strong>Good for:</strong> a slow city break, sea views, food, the botanical garden, a ski day at Goderdzi.</li>
+        <li><strong>Not for:</strong> swimming or nightlife — many beach bars and summer venues are closed.</li>
+        <li><strong>Stay:</strong> Old Town or the boulevard, so cafes and the sea are a short walk in the rain.</li>
+      </ul>
+      <p><em>Last checked: November 2026.</em></p>
+
+      <h2>Month by month</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Day temp</th>
+            <th>What to expect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>December</td>
+            <td>~10–12°C</td>
+            <td>New Year lights and markets, busy around 31 December</td>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>~8–10°C</td>
+            <td>Coldest month, quietest city, ski season in the mountains</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>~9–11°C</td>
+            <td>Still quiet, good hotel deals, best snow at Goderdzi</td>
+          </tr>
+          <tr>
+            <td>March</td>
+            <td>~11–14°C</td>
+            <td>Spring starts, magnolias and camellias in bloom</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Things to do in winter</h2>
+      <ol>
+        <li>
+          <strong>Walk the Batumi Boulevard</strong> — 7 km of seafront park, the Alphabet Tower, the moving Ali and Nino
+          statue and the Ferris wheel, without summer crowds.
+        </li>
+        <li>
+          <strong>Batumi Botanical Garden</strong> — a huge subtropical garden on the hills north of the city, green even in
+          January. Go on a dry day.
+        </li>
+        <li><strong>Old Town and Europe Square</strong> — cafes, Adjarian khachapuri and fish restaurants.</li>
+        <li><strong>Gonio Fortress</strong> — Roman-era fortress 15 minutes south, near the Turkish border.</li>
+        <li><strong>Waterfalls and bridges of Adjara</strong> — Makhuntseti waterfall and the old Queen Tamar bridge, about 30 km inland.</li>
+        <li>
+          <strong>Ski day at Goderdzi</strong> — newer resort in the Adjara mountains, around 2.5–3 hours by car. Snow
+          conditions vary, so book flexibly.
+        </li>
+        <li><strong>Rainy-day plan:</strong> the Dolphinarium, the Archaeological Museum, the Sea Tower viewpoint and long lunches.</li>
+      </ol>
+
+      <h2>Getting there in winter</h2>
+      <ul>
+        <li>
+          <strong>Fly direct to Batumi</strong> — there are fewer routes than in summer, so also check Kutaisi and Tbilisi.
+          See <a href={path("flights-to-georgia")}>flights to Georgia</a>.
+        </li>
+        <li><strong>Train from Tbilisi</strong> — about 5–6 hours, comfortable and cheap; book a few days ahead around holidays.</li>
+        <li><strong>From Kutaisi airport</strong> — a transfer or minivan takes about 2.5 hours.</li>
+      </ul>
+
+      <h2>Where to stay in winter</h2>
+      <p>
+        In summer, the quieter outskirts make sense. In winter, stay central: the Old Town and the boulevard have the cafes
+        and restaurants that stay open all year. Ask for a room with heating and good windows — some summer apartments are
+        not built for cold nights. Full details: <a href={path("batumi-hotels")}>where to stay in Batumi</a>.
+      </p>
+
+      <h2>Packing</h2>
+      <ul>
+        <li>Waterproof jacket and shoes, an umbrella.</li>
+        <li>Warm layers for the evenings and the mountains.</li>
+        <li>
+          Mobile data for maps and Bolt — see <a href={path("esim-georgia")}>eSIM for Georgia</a>.
+        </li>
+        <li>
+          Travel insurance — it is required for entry since 2026. See
+          <a href={path("georgia-entry-requirements")}>Georgia entry requirements</a>.
+        </li>
+      </ul>
+
+      <h2>FAQ</h2>
+      {
+        faq.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+    </article>
+
+    <aside class="action-panel" data-reveal>
+      <h2>Winter deals</h2>
+      <p>Off-season seafront rooms are the main reason to go now. Filter by free cancellation and heating.</p>
+      <a class="btn btn-primary" href={aff("hotelsBatumi")} target="_blank" rel="noopener sponsored noreferrer"
+        >Batumi hotels</a
+      >
+      <a class="btn btn-ghost" href={aff("flights")} target="_blank" rel="noopener sponsored noreferrer"
+        >Flights to Batumi</a
+      >
+      <a class="btn btn-ghost" href={aff("tours")} target="_blank" rel="noopener sponsored noreferrer"
+        >Tours from Batumi</a
+      >
+      <p class="disclaimer">Affiliate disclosure: we may earn a commission if you book through these links.</p>
+    </aside>
+  </main>
+</BaseLayout>
